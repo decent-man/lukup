@@ -1,0 +1,26 @@
+#!/usr/bin/python3.8
+import sys
+from selenium import webdriver
+# from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+# from selenium.webdriver.support.ui import WebDriverWait
+# from selenium.webdriver.support import expected_conditions as EC
+
+def searchable(arglist):
+    "This converts spaces into + sign"
+    return "+".join(arglist)
+
+options = webdriver.FirefoxOptions()
+options.headless = False
+driver = webdriver.Firefox(executable_path='/home/rakshit/Downloads/geckodriver',options=options)
+url = 'https://www.amazon.in/s?k=' + searchable(sys.argv[1:])
+driver.get(url)
+# print("========\n" + driver.page_source + "\n========")
+# try:
+print("==================\n\t\t" + driver.current_url + "\n==================")
+prodlist = driver.find_elements(By.XPATH,'.//div[@data-component-type="s-search-result"]')
+for listing in prodlist:
+    print("=========================\n" + listing.text + "\n")
+# finally:
+print("~~~~~~~~Done~~~~~~~")
+driver.quit()

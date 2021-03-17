@@ -1,0 +1,37 @@
+#!/usr/bin/python3.8
+import sys
+import lxml
+import json
+import requests
+from bs4 import BeautifulSoup as BS
+# from dataclasses import dataclass
+
+CONFIG_FILE = sys.argv[1]
+HEADER_FILE = "BW_HEADERS"
+
+with open(CONFIG_FILE) as config:
+    cfg   = json.load(config)
+    U_SEP = cfg['SEP'] 
+    URL   = cfg['URL'] + U_SEP.join(str(word) for word in sys.argv[2:])
+    TAG   = cfg['TAG_TYPE']
+    ATTRID = cfg['ATTR_NAM']
+    ATTRVAL = cfg['ATTR_VAL']
+with open(HEADER_FILE) as header:
+    SESSION_HEADER = json.load(header)
+
+# @dataclass
+# class O_Model:
+     #DATA CLASS GENERATOR CODE
+print("\n=====================================\n")
+# print("Seperator: " + U_SEP + "\nProcessed Link:" + URL)
+print(URL)
+# print(SESSION_HEADER)
+print("\n=====================================\n")
+with requests.Session() as RQ:
+    RQ.headers = SESSION_HEADER
+    html = BS(RQ.get(URL).text, 'lxml')
+    mainContent = html.find_all(TAG , attrs={ATTRID:ATTRVAL})
+    # print(html.prettify())
+    for content in mainContent:
+        print(content.text)
+    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Done E!~~")

@@ -1,0 +1,16 @@
+#!/usr/bin/python3.8
+import requests
+import lxml
+from bs4 import BeautifulSoup as bullsh
+source = requests.get('https://www.amazon.com/s?k=Corsair').text
+# print(source)
+
+soupit = bullsh(source, 'lxml')
+print(soupit.prettify())
+# mainbody = soupit.find('body')
+# print(mainbody)
+# infosec = soupit.find('div',class_='sg-col-inner').text
+# headsec = soupit.find('input',id_='twotabsearchtextbox',class_='nav-input nav-progressive-attribute').text
+# # print("=======================================================")
+# print(headsec)
+# print(infosec)

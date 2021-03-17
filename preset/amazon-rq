@@ -1,0 +1,54 @@
+#!/usr/bin/python3.8
+import sys
+import requests
+import lxml
+from bs4 import BeautifulSoup as BS
+from dataclasses import dataclass
+
+@dataclass
+class SResult:
+    rid         : str
+    pname       : str
+    stars       : str
+    reviews     : int
+    price       : int
+    free_shipping: bool
+    pimage      : str
+
+def result_parse(entlisting):
+    if not entlisting:
+        return
+    pname = entlisting.h2.span.text
+    rid = entlisting.get("data-asin")
+    if price_section := entlisting.select_one("span.a-price"):
+        price = price_section.span.text
+    else:
+        price = "ITSFREENIBBAS!"
+    if ratings_sec := entlisting.select_one("span").get("aria-label"):
+        reviews = ratings_sec.select_one("span.a-size-base").text
+    else:
+        stars, reviews = None,None
+    free_shipping = entlisting.find("span",attrs = {"aria-label" : "FREE Delivery By Amazon"}) is not None
+    image_url = entlisting.select_one("img.s-image").get("src")
+    return SResult(rid,pname,stars,reviews,price,free_shipping,image_url)
+
+URL = "https://www.amazon.in/s?k=" + "+".join(sys.argv[1:])
+# quteheader = {"User-Agent" : "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36 RuxitSynthetic/1.0 v9139690441 t38550 ath9b965f92 altpub cvcv=2"}
+# quteheader.update({"Referer" : "https://duckduckgo.com?q=amazon"})
+# with requests.get(URL, headers=quteheader) as areply:
+    # print(areply.request.headers)
+    # print(areply.cookies.keys)
+    # print(areply)
+with requests.Session() as RQ:
+    RQ.headers = {"User-Agent" : "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36 RuxitSynthetic/1.0 v9139690441 t38550 ath9b965f92 altpub cvcv=2" , "Referer" : "https://duckduckgo.com?q=amazon" }
+    sauce = RQ.get(URL).text
+    # print(RQ.cookies.keys())
+    bsoup = BS(sauce, 'lxml')
+    # print(bsoup.prettify())
+    products = bsoup.find_all('div',attrs={"data-component-type":"s-search-result"})
+    # print([result_parse(product) for product in products])
+    for product in products:
+        print("======\n" + str(result_parse(product)) + "\n==")
+    # for listing in products:
+        # print("===========\n" + listing.text + "\n==========")
+    print("~~~~~~~DONE~~~~~~~~~")

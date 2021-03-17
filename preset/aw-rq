@@ -1,0 +1,22 @@
+#!/usr/bin/python3.8
+import sys
+import requests
+import lxml
+from bs4 import BeautifulSoup as bullsh
+
+def fmtsearch(arglist):
+    return "+".join(arglist)
+
+URL = "https://wiki.archlinux.org/index.php?search=" + fmtsearch(sys.argv[1:])
+source = requests.get(URL).text
+# print(source)
+
+soupit = bullsh(source, 'lxml')
+# print(soupit.prettify())
+# mainbody = soupit.find('body')
+# print(mainbody)
+infosec = soupit.find('div',class_='mw-parser-output').text
+headsec = soupit.find('h1',class_='firstHeading').text
+# print("=======================================================")
+print(headsec)
+print(infosec)
