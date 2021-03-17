@@ -8,6 +8,7 @@ from bs4 import BeautifulSoup as BS
 
 CONFIG_FILE = sys.argv[1]
 HEADER_FILE = "BW_HEADERS"
+LINE_CHAR = "="
 
 with open(CONFIG_FILE) as config:
     cfg   = json.load(config)
@@ -16,22 +17,29 @@ with open(CONFIG_FILE) as config:
     TAG   = cfg['TAG_TYPE']
     ATTRID = cfg['ATTR_NAM']
     ATTRVAL = cfg['ATTR_VAL']
-with open(HEADER_FILE) as header:
-    SESSION_HEADER = json.load(header)
+    U_A = cfg['AGENT']
+    REF = cfg['REFERER']
 
 # @dataclass
 # class O_Model:
      #DATA CLASS GENERATOR CODE
-print("\n=====================================\n")
+
+# print("\n=====================================\n")
 # print("Seperator: " + U_SEP + "\nProcessed Link:" + URL)
-print(URL)
+# print(URL)
 # print(SESSION_HEADER)
-print("\n=====================================\n")
+# print("\n=====================================\n")
 with requests.Session() as RQ:
-    RQ.headers = SESSION_HEADER
+    RQ.headers = { "User-Agent" : U_A , "Referer": REF }
     html = BS(RQ.get(URL).text, 'lxml')
+    title = html.find('title')
     mainContent = html.find_all(TAG , attrs={ATTRID:ATTRVAL})
     # print(html.prettify())
+    print(LINE_CHAR*len(URL))
+    print("\t" + title.text + "\n" + URL)
+    print(LINE_CHAR*len(URL))
     for content in mainContent:
         print(content.text)
-    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Done E!~~")
+    print("<EOF>")
+
+print("  Done Closing requests.")

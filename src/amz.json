@@ -1,10 +1,9 @@
 {
 "AGENT" : "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36 RuxitSynthetic/1.0 v9139690441 t38550 ath9b965f92 altpub cvcv=2",
-"REFERER" : "https://duckduckgo.com?q=archwiki",
-"URL" : "https://wiki.archlinux.org/index.php?search=",
+"REFERER" : "https://duckduckgo.com?q=amazon",
+"URL" : "https://www.amazon.in/s?k=",
 "SEP" : "+",
 "TAG_TYPE" : "div",
-"ATTR_NAM" : "class",
-"ATTR_VAL" : "mw-parser-output"
+"ATTR_NAM" : "data-component-type",
+"ATTR_VAL" : "s-search-result"
 }
-
