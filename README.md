@@ -13,7 +13,7 @@ The program is very basic at the moment. So the resulting output may look messed
 2. Copy it to clipboard first.
 3. Invoke lukup.
 4. Lukup will show a list of websites it has profiles for.
-   If the website you are looking for doesn't exist, choose ** + Add Website**.
+   If the website you are looking for doesn't exist, choose **+ Add Website**.
   - Search for `ASPERO0 GETARO1` on your website and paste the link of the resulting page that opens up.
   - Lukup will process the link and ask you for a proper search term appropriate according to the website.
   - Lukup will open the page in **Element Selection Mode**. Select the web element which has the information you look for.
