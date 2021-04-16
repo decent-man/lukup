@@ -4,13 +4,11 @@ import lxml
 import json
 import requests
 from bs4 import BeautifulSoup as BS
-# from dataclasses import dataclass
-def dhe_scraper():
-    CONFIG_FILE = sys.argv[1]
-    HEADER_FILE = "BW_HEADERS"
+
+def dhe_scraper(PROFILE):
     LINE_CHAR = "="
     
-    with open(CONFIG_FILE) as config:
+    with open(PROFILE) as config:
         cfg   = json.load(config)
         U_SEP = cfg['SEP'] 
         URL   = cfg['URL'] + U_SEP.join(str(word) for word in sys.argv[2:])
@@ -20,15 +18,6 @@ def dhe_scraper():
         U_A = cfg['AGENT']
         REF = cfg['REFERER']
     
-    # @dataclass
-    # class O_Model:
-         #DATA CLASS GENERATOR CODE
-    
-    # print("\n=====================================\n")
-    # print("Seperator: " + U_SEP + "\nProcessed Link:" + URL)
-    # print(URL)
-    # print(SESSION_HEADER)
-    # print("\n=====================================\n")
     with requests.Session() as RQ:
         RQ.headers = { "User-Agent" : U_A , "Referer": REF }
         html = BS(RQ.get(URL).text, 'lxml')
@@ -42,6 +31,15 @@ def dhe_scraper():
         # for content in mainContent:
             # print(content.text)
         # print("<EOF>")
+        # print("  Done Closing requests.")
 
-# print("  Done Closing requests.")
-print(dhe_scraper())
+print(dhe_scraper(sys.argv[1]))
+    # @dataclass
+    # class O_Model:
+         #DATA CLASS GENERATOR CODE
+    
+    # print("\n=====================================\n")
+    # print("Seperator: " + U_SEP + "\nProcessed Link:" + URL)
+    # print(URL)
+    # print(SESSION_HEADER)
+    # print("\n=====================================\n")
