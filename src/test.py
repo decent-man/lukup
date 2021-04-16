@@ -1,7 +1,7 @@
 from master import dhe_scraper # <= import like this
 import sys                     # <= needed to read arguments
-print(dhe_scraper(sys.argv[1]))
-#                      /\
+print(dhe_scraper(sys.argv[1])) # <= This is only a test print. Only to show that the output of the function is the partial html file.
+#                      /\            To seperate out the text you might need to refer to the commented lines 32 & 33 in master.py - "for content in mainContent: print(content.text)" 
 #                      ||
 #           It takes file name as input
 
