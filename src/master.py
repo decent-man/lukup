@@ -23,7 +23,8 @@ def dhe_scraper(PROFILE):
         html = BS(RQ.get(URL).text, 'lxml')
         title = html.find('title')
         mainContent = html.find_all(TAG , attrs={ATTRID:ATTRVAL})
-        return mainContent
+        
+    return mainContent
         # print(html.prettify())
         # print(LINE_CHAR*len(URL))
         # print("\t" + title.text + "\n" + URL)
