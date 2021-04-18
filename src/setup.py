@@ -5,10 +5,6 @@ import pyautogui
 from selenium import webdriver
 import json
 from dataclasses import dataclass, asdict
-# irrelevent modules - for now
-# from selenium.webdriver.common.keys import Keys
-# from selenium.webdriver.common.by import By
-# from selenium.webdriver.common.action_chains import ActionChains
 
 #=========VAR's============
 FIRE_PATH='/home/rakshit/Downloads/geckodriver'
@@ -68,7 +64,7 @@ def coreSetup():
        pyautogui.hotkey('ctrl','shift','c')
        #CALL WINDOW TO FEED THE TAG
        # Gen_JSON(PROFILE(,,,,),filename) || Gen_JSON(XPROFILE(,,,,),filename)
-       # time.sleep(15)
+       time.sleep(15)
        browser.quit()
        Write_JSON(Gen_JSON(XPROFILE(DEFAULT_UA,DEFAULT_REFERER,gib2URL,DEFAULT_SEP,SAMPLE_XPATH)),SAMPLE_FILENAME)
        
@@ -92,4 +88,4 @@ def Write_JSON(jsonobj,siteName):
     open(siteName,'x').write(jsonobj)
 #==========================
 
-coreSetup()
+# coreSetup()
