@@ -5,7 +5,8 @@ This section involves capturing accurate html tag information for lukup to scrap
 1. In the opened webpage, select and click on the element that contains the information you want to fetch.
 2. Upon clicking the element's tag will be highlighted.
 3. Beyond this there are two ways you can proceed:
- 1. **The XPATh method**:
+
+ 1. **The XPATH method**:
     This method is the "easier" option, but as all things easy it comes with a higher chance of inaccuracy.
    - Right click on the `id` attribute of the tag and select Copy XPATH from within the menu/submenu.
    - Paste this information in the Xpath field.
