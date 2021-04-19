@@ -1,7 +1,9 @@
 {
 "AGENT": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36 RuxitSynthetic/1.0 v9139690441 t38550 ath9b965f92 altpub cvcv=2",
+"ATTR_ID": "id",
+"ATTR_VAL": "content",
 "REFERER": "https://duckduckgo.com?q=wiki",
 "SEP": "+",
-"URL": "https://wiki.archlinux.org/index.php?search=",
-"XPATH": "//*[@id=\"content\"]"
+"TAG_TYPE": "div",
+"URL": "https://wiki.archlinux.org/index.php?search="
 }
