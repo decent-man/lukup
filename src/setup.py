@@ -1,9 +1,7 @@
 #!/usr/bin/python
 import sys
-import time
 import pyautogui
 import json
-from dataclasses import dataclass, asdict
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
@@ -73,7 +71,7 @@ def linkAnalyzer(GIBRL,GIBQUERY,GIB2RL,GIB2QUERY):
     #
     staticParsed = (Gen_STATIC(GIBRL,GIBQUERY),Gen_STATIC(GIB2RL,GIB2QUERY)) #Both query's parsed and stored into a tuple.
     if staticParsed[0] == staticParsed[1]:
-        return staticParsed[1]
+        return str(staticParsed[1])
     else:
         return None
 
@@ -88,6 +86,16 @@ def browserInit(_url_,driverloc):
        return browser
 
 def profileGen():
+    from dataclasses import dataclass, asdict
+    @dataclass
+    class PROFILE:
+        AGENT: str
+        REFERER: str
+        URL: str
+        SEP: str
+        TAG_TYPE: str
+        ATTR_ID: str
+        ATTR_VAL: str
     STOCK_UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36 RuxitSynthetic/1.0 v9139690441 t38550 ath9b965f92 altpub cvcv=2'
     STOCK_REFERER = 'https://duckduckgo.com?q=wiki'
     STATIC_URL=staticParsed[1]
@@ -116,4 +124,4 @@ def Write_JSON(jsonobj,siteName):
     open(siteName,'w').write(jsonobj)
 #==========================
 
-coreSetup()
+# coreSetup()
