@@ -1,0 +1,311 @@
+1618816992629	geckodriver	INFO	Listening on 127.0.0.1:59827
+1618816993122	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "0" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileMkIQ0n"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+DevTools listening on ws://localhost:44173/devtools/browser/0edce496-f7e3-410d-8429-a839b79ded03
+1618816995648	Marionette	INFO	Listening on port 34693
+1618816995768	Marionette	WARN	TLS certificate errors will be ignored for this session
+1618817012907	Marionette	INFO	Stopped listening on port 34693
+!!! error running onStopped callback: TypeError: callback is not a function
+1618817013277	RemoteAgent	ERROR	unable to stop listener: [Exception... "Component returned failure code: 0x8000ffff (NS_ERROR_UNEXPECTED) [nsIWindowMediator.getEnumerator]"  nsresult: "0x8000ffff (NS_ERROR_UNEXPECTED)"  location: "JS frame :: chrome://remote/content/cdp/observers/TargetObserver.jsm :: stop :: line 61"  data: no] Stack trace: stop()@TargetObserver.jsm:61
+unwatchForTabs()@TargetList.jsm:71
+unwatchForTargets()@TargetList.jsm:38
+destructor()@TargetList.jsm:110
+close()@RemoteAgent.jsm:124
+1618817031841	geckodriver	INFO	Listening on 127.0.0.1:40457
+1618817031847	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "0" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilegz98pg"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+DevTools listening on ws://localhost:38207/devtools/browser/0313838b-e794-4900-9cdd-92d937a7a8bb
+1618817033949	Marionette	INFO	Listening on port 43145
+1618817034007	Marionette	WARN	TLS certificate errors will be ignored for this session
+1618817051311	Marionette	INFO	Stopped listening on port 43145
+JavaScript error: chrome://browser/content/browser-customization.js, line 166: NS_ERROR_NOT_INITIALIZED: 
+!!! error running onStopped callback: TypeError: callback is not a function
+1618817051825	RemoteAgent	ERROR	unable to stop listener: [Exception... "Component returned failure code: 0x8000ffff (NS_ERROR_UNEXPECTED) [nsIWindowMediator.getEnumerator]"  nsresult: "0x8000ffff (NS_ERROR_UNEXPECTED)"  location: "JS frame :: chrome://remote/content/cdp/observers/TargetObserver.jsm :: stop :: line 61"  data: no] Stack trace: stop()@TargetObserver.jsm:61
+unwatchForTabs()@TargetList.jsm:71
+unwatchForTargets()@TargetList.jsm:38
+destructor()@TargetList.jsm:110
+close()@RemoteAgent.jsm:124
+1618817088178	geckodriver	INFO	Listening on 127.0.0.1:35387
+1618817088184	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "0" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileyNz4U2"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+DevTools listening on ws://localhost:33925/devtools/browser/6c5c6583-ab03-4230-95b9-7e6023b63e82
+1618817090177	Marionette	INFO	Listening on port 36281
+1618817090224	Marionette	WARN	TLS certificate errors will be ignored for this session
+1618817092449	Marionette	INFO	Stopped listening on port 36281
+JavaScript error: resource://devtools/client/framework/toolbox.js, line 3756: TypeError: this.toolbarButtons is undefined
+!!! error running onStopped callback: TypeError: callback is not a function
+console.error: "Error when attaching target:" (void 0)
+console.error: "Error when attaching target:" (void 0)
+JavaScript error: resource://devtools/shared/protocol/Front/FrontClassWithSpec.js, line 28: Error: Can not send request 'watchResources' because front 'watcher' is already destroyed.
+1618817092862	RemoteAgent	ERROR	unable to stop listener: [Exception... "Component returned failure code: 0x8000ffff (NS_ERROR_UNEXPECTED) [nsIWindowMediator.getEnumerator]"  nsresult: "0x8000ffff (NS_ERROR_UNEXPECTED)"  location: "JS frame :: chrome://remote/content/cdp/observers/TargetObserver.jsm :: stop :: line 61"  data: no] Stack trace: stop()@TargetObserver.jsm:61
+unwatchForTabs()@TargetList.jsm:71
+unwatchForTargets()@TargetList.jsm:38
+destructor()@TargetList.jsm:110
+close()@RemoteAgent.jsm:124
+1618817138051	geckodriver	INFO	Listening on 127.0.0.1:56353
+1618817138057	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "0" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileuaX1Jm"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+DevTools listening on ws://localhost:33515/devtools/browser/4e224f01-8a2b-4fbb-8ec9-9a68c992f220
+1618817140112	Marionette	INFO	Listening on port 42079
+1618817140239	Marionette	WARN	TLS certificate errors will be ignored for this session
+1618817142425	Marionette	INFO	Stopped listening on port 42079
+JavaScript error: resource://devtools/client/framework/toolbox.js, line 3756: TypeError: this.toolbarButtons is undefined
+!!! error running onStopped callback: TypeError: callback is not a function
+console.error: "Error when attaching target:" (void 0)
+console.error: "Error when attaching target:" (void 0)
+JavaScript error: resource://devtools/shared/protocol/Front/FrontClassWithSpec.js, line 28: Error: Can not send request 'watchResources' because front 'watcher' is already destroyed.
+1618817142832	RemoteAgent	ERROR	unable to stop listener: [Exception... "Component returned failure code: 0x8000ffff (NS_ERROR_UNEXPECTED) [nsIWindowMediator.getEnumerator]"  nsresult: "0x8000ffff (NS_ERROR_UNEXPECTED)"  location: "JS frame :: chrome://remote/content/cdp/observers/TargetObserver.jsm :: stop :: line 61"  data: no] Stack trace: stop()@TargetObserver.jsm:61
+unwatchForTabs()@TargetList.jsm:71
+unwatchForTargets()@TargetList.jsm:38
+destructor()@TargetList.jsm:110
+close()@RemoteAgent.jsm:124
+1618817216105	geckodriver	INFO	Listening on 127.0.0.1:50775
+1618817216111	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "0" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile1zjhbw"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+DevTools listening on ws://localhost:40125/devtools/browser/d03ee672-826e-4050-aafb-61a2078e28d1
+1618817218245	Marionette	INFO	Listening on port 44585
+1618817218351	Marionette	WARN	TLS certificate errors will be ignored for this session
+1618817220878	Marionette	INFO	Stopped listening on port 44585
+JavaScript error: resource://devtools/client/framework/toolbox.js, line 3756: TypeError: this.toolbarButtons is undefined
+!!! error running onStopped callback: TypeError: callback is not a function
+console.error: "Error when attaching target:" (void 0)
+console.error: "Error when attaching target:" (void 0)
+JavaScript error: resource://devtools/shared/protocol/Front/FrontClassWithSpec.js, line 28: Error: Can not send request 'watchResources' because front 'watcher' is already destroyed.
+1618817221281	RemoteAgent	ERROR	unable to stop listener: [Exception... "Component returned failure code: 0x8000ffff (NS_ERROR_UNEXPECTED) [nsIWindowMediator.getEnumerator]"  nsresult: "0x8000ffff (NS_ERROR_UNEXPECTED)"  location: "JS frame :: chrome://remote/content/cdp/observers/TargetObserver.jsm :: stop :: line 61"  data: no] Stack trace: stop()@TargetObserver.jsm:61
+unwatchForTabs()@TargetList.jsm:71
+unwatchForTargets()@TargetList.jsm:38
+destructor()@TargetList.jsm:110
+close()@RemoteAgent.jsm:124
+1618817235760	geckodriver	INFO	Listening on 127.0.0.1:60161
+1618817235766	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "0" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilePE3ub5"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+DevTools listening on ws://localhost:37099/devtools/browser/6c17cc77-97f2-435b-bc6b-9f2fa1ad60ca
+1618817237871	Marionette	INFO	Listening on port 45287
+1618817237914	Marionette	WARN	TLS certificate errors will be ignored for this session
+1618817240163	Marionette	INFO	Stopped listening on port 45287
+JavaScript error: resource://devtools/client/framework/toolbox.js, line 3756: TypeError: this.toolbarButtons is undefined
+!!! error running onStopped callback: TypeError: callback is not a function
+console.error: "Error when attaching target:" (void 0)
+console.error: "Error when attaching target:" (void 0)
+JavaScript error: resource://devtools/shared/protocol/Front/FrontClassWithSpec.js, line 28: Error: Can not send request 'watchResources' because front 'watcher' is already destroyed.
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1618817240581	RemoteAgent	ERROR	unable to stop listener: [Exception... "Component returned failure code: 0x8000ffff (NS_ERROR_UNEXPECTED) [nsIWindowMediator.getEnumerator]"  nsresult: "0x8000ffff (NS_ERROR_UNEXPECTED)"  location: "JS frame :: chrome://remote/content/cdp/observers/TargetObserver.jsm :: stop :: line 61"  data: no] Stack trace: stop()@TargetObserver.jsm:61
+unwatchForTabs()@TargetList.jsm:71
+unwatchForTargets()@TargetList.jsm:38
+destructor()@TargetList.jsm:110
+close()@RemoteAgent.jsm:124
+1618817340792	geckodriver	INFO	Listening on 127.0.0.1:53691
+1618817340798	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "0" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileniyvoY"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+DevTools listening on ws://localhost:38781/devtools/browser/6e6af7a1-d33b-44ab-8759-ce0abf1fa3ad
+1618817342758	Marionette	INFO	Listening on port 46673
+1618817342851	Marionette	WARN	TLS certificate errors will be ignored for this session
+1618817345483	Marionette	INFO	Stopped listening on port 46673
+JavaScript error: resource://devtools/client/framework/toolbox.js, line 3756: TypeError: this.toolbarButtons is undefined
+console.error: "Tried to call watchFronts for the 'inspector' type on an already destroyed front 'browsingContextTarget'."
+JavaScript error: resource://devtools/shared/protocol/Front/FrontClassWithSpec.js, line 28: Error: Can not send request 'watchResources' because front 'watcher' is already destroyed.
+!!! error running onStopped callback: TypeError: callback is not a function
+1618817345900	RemoteAgent	ERROR	unable to stop listener: [Exception... "Component returned failure code: 0x8000ffff (NS_ERROR_UNEXPECTED) [nsIWindowMediator.getEnumerator]"  nsresult: "0x8000ffff (NS_ERROR_UNEXPECTED)"  location: "JS frame :: chrome://remote/content/cdp/observers/TargetObserver.jsm :: stop :: line 61"  data: no] Stack trace: stop()@TargetObserver.jsm:61
+unwatchForTabs()@TargetList.jsm:71
+unwatchForTargets()@TargetList.jsm:38
+destructor()@TargetList.jsm:110
+close()@RemoteAgent.jsm:124
+1618817371201	geckodriver	INFO	Listening on 127.0.0.1:39321
+1618817371207	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "0" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileDsWkXu"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+DevTools listening on ws://localhost:46667/devtools/browser/62879b19-24c0-41cf-b1c2-f91fc0934792
+1618817373170	Marionette	INFO	Listening on port 44283
+1618817373249	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.warn: "Async method failed in safeAsyncMethod" (new Error("Connection closed, pending request to server0.conn0.child3/domwalker24, type cancelPick failed\n\nRequest stack:\nrequest@resource://devtools/shared/protocol/Front.js:288:14\ngenerateRequestMethods/</frontProto[name]@resource://devtools/shared/protocol/Front/FrontClassWithSpec.js:46:19\ncancelPick@resource://devtools/client/fronts/walker.js:546:18\nexports.safeAsyncMethod/<@resource://devtools/shared/async-utils.js:57:25\n_onInspectorFrontDestroyed@resource://devtools/client/inspector/node-picker.js:114:18\nstop@resource://devtools/client/inspector/node-picker.js:174:18\n_destroyToolbox@resource://devtools/client/framework/toolbox.js:3718:24\ndestroy@resource://devtools/client/framework/toolbox.js:3652:10\n_forgetBrowserWindow@resource://devtools/client/framework/devtools-browser.js:709:17\nhandleEvent@resource://devtools/client/framework/devtools-browser.js:730:26\n", "resource://devtools/shared/protocol/Front.js", 99))
+!!! error running onStopped callback: TypeError: callback is not a function
+1618817381884	Marionette	INFO	Stopped listening on port 44283
+1618817382108	RemoteAgent	ERROR	unable to stop listener: [Exception... "Component returned failure code: 0x8000ffff (NS_ERROR_UNEXPECTED) [nsIWindowMediator.getEnumerator]"  nsresult: "0x8000ffff (NS_ERROR_UNEXPECTED)"  location: "JS frame :: chrome://remote/content/cdp/observers/TargetObserver.jsm :: stop :: line 61"  data: no] Stack trace: stop()@TargetObserver.jsm:61
+unwatchForTabs()@TargetList.jsm:71
+unwatchForTargets()@TargetList.jsm:38
+destructor()@TargetList.jsm:110
+close()@RemoteAgent.jsm:124
+1618817510041	geckodriver	INFO	Listening on 127.0.0.1:42701
+1618817510047	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "0" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileqW1XZM"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+DevTools listening on ws://localhost:34589/devtools/browser/b7be4ac0-417a-4487-bb4a-2c4739a7284f
+1618817512072	Marionette	INFO	Listening on port 35099
+1618817512186	Marionette	WARN	TLS certificate errors will be ignored for this session
+1618817514627	Marionette	INFO	Stopped listening on port 35099
+JavaScript error: resource://devtools/client/framework/toolbox.js, line 3756: TypeError: this.toolbarButtons is undefined
+console.error: "Tried to call watchFronts for the 'inspector' type on an already destroyed front 'browsingContextTarget'."
+JavaScript error: resource://devtools/shared/protocol/Front/FrontClassWithSpec.js, line 28: Error: Can not send request 'watchResources' because front 'watcher' is already destroyed.
+!!! error running onStopped callback: TypeError: callback is not a function
+1618817515034	RemoteAgent	ERROR	unable to stop listener: [Exception... "Component returned failure code: 0x8000ffff (NS_ERROR_UNEXPECTED) [nsIWindowMediator.getEnumerator]"  nsresult: "0x8000ffff (NS_ERROR_UNEXPECTED)"  location: "JS frame :: chrome://remote/content/cdp/observers/TargetObserver.jsm :: stop :: line 61"  data: no] Stack trace: stop()@TargetObserver.jsm:61
+unwatchForTabs()@TargetList.jsm:71
+unwatchForTargets()@TargetList.jsm:38
+destructor()@TargetList.jsm:110
+close()@RemoteAgent.jsm:124
+1618818295635	geckodriver	INFO	Listening on 127.0.0.1:50801
+1618818295641	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "0" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile44PTJN"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+DevTools listening on ws://localhost:44421/devtools/browser/4fd05148-31f6-4586-8d64-2f6f02c4048c
+1618818297717	Marionette	INFO	Listening on port 42073
+1618818297794	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'MarionetteEvents'
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'MarionetteEvents'
+console.warn: "Async method failed in safeAsyncMethod" (new Error("Connection closed, pending request to server0.conn0.child3/domwalker24, type cancelPick failed\n\nRequest stack:\nrequest@resource://devtools/shared/protocol/Front.js:288:14\ngenerateRequestMethods/</frontProto[name]@resource://devtools/shared/protocol/Front/FrontClassWithSpec.js:46:19\ncancelPick@resource://devtools/client/fronts/walker.js:546:18\nexports.safeAsyncMethod/<@resource://devtools/shared/async-utils.js:57:25\n_onInspectorFrontDestroyed@resource://devtools/client/inspector/node-picker.js:114:18\nstop@resource://devtools/client/inspector/node-picker.js:174:18\n_destroyToolbox@resource://devtools/client/framework/toolbox.js:3718:24\ndestroy@resource://devtools/client/framework/toolbox.js:3652:10\n_forgetBrowserWindow@resource://devtools/client/framework/devtools-browser.js:709:17\nhandleEvent@resource://devtools/client/framework/devtools-browser.js:730:26\n", "resource://devtools/shared/protocol/Front.js", 99))
+JavaScript error: chrome://browser/content/browser-customization.js, line 166: NS_ERROR_NOT_INITIALIZED: 
+!!! error running onStopped callback: TypeError: callback is not a function
+1618818537956	Marionette	INFO	Stopped listening on port 42073
+1618818537973	RemoteAgent	ERROR	unable to stop listener: [Exception... "Component returned failure code: 0x8000ffff (NS_ERROR_UNEXPECTED) [nsIWindowMediator.getEnumerator]"  nsresult: "0x8000ffff (NS_ERROR_UNEXPECTED)"  location: "JS frame :: chrome://remote/content/cdp/observers/TargetObserver.jsm :: stop :: line 61"  data: no] Stack trace: stop()@TargetObserver.jsm:61
+unwatchForTabs()@TargetList.jsm:71
+unwatchForTargets()@TargetList.jsm:38
+destructor()@TargetList.jsm:110
+close()@RemoteAgent.jsm:124
+1618818538912	geckodriver	INFO	Listening on 127.0.0.1:60763
+1618818538918	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "0" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileKZnSCD"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+DevTools listening on ws://localhost:42681/devtools/browser/177d452c-fcf4-4f1c-ac96-ef6a3d227bcf
+1618818541800	Marionette	INFO	Listening on port 36527
+1618818541876	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'MarionetteEvents'
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'MarionetteEvents'
+console.warn: "Async method failed in safeAsyncMethod" (new Error("Connection closed, pending request to server0.conn0.child3/domwalker24, type cancelPick failed\n\nRequest stack:\nrequest@resource://devtools/shared/protocol/Front.js:288:14\ngenerateRequestMethods/</frontProto[name]@resource://devtools/shared/protocol/Front/FrontClassWithSpec.js:46:19\ncancelPick@resource://devtools/client/fronts/walker.js:546:18\nexports.safeAsyncMethod/<@resource://devtools/shared/async-utils.js:57:25\n_onInspectorFrontDestroyed@resource://devtools/client/inspector/node-picker.js:114:18\nstop@resource://devtools/client/inspector/node-picker.js:174:18\n_destroyToolbox@resource://devtools/client/framework/toolbox.js:3718:24\ndestroy@resource://devtools/client/framework/toolbox.js:3652:10\n_forgetBrowserWindow@resource://devtools/client/framework/devtools-browser.js:709:17\nhandleEvent@resource://devtools/client/framework/devtools-browser.js:730:26\n", "resource://devtools/shared/protocol/Front.js", 99))
+!!! error running onStopped callback: TypeError: callback is not a function
+1618818546977	Marionette	INFO	Stopped listening on port 36527
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1618818547193	RemoteAgent	ERROR	unable to stop listener: [Exception... "Component returned failure code: 0x8000ffff (NS_ERROR_UNEXPECTED) [nsIWindowMediator.getEnumerator]"  nsresult: "0x8000ffff (NS_ERROR_UNEXPECTED)"  location: "JS frame :: chrome://remote/content/cdp/observers/TargetObserver.jsm :: stop :: line 61"  data: no] Stack trace: stop()@TargetObserver.jsm:61
+unwatchForTabs()@TargetList.jsm:71
+unwatchForTargets()@TargetList.jsm:38
+destructor()@TargetList.jsm:110
+close()@RemoteAgent.jsm:124
+1618818724104	geckodriver	INFO	Listening on 127.0.0.1:39643
+1618818724110	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "0" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile6RfPfw"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+DevTools listening on ws://localhost:39669/devtools/browser/b2c62082-8713-4093-a9ab-8b11ef957b79
+1618818726377	Marionette	INFO	Listening on port 32769
+1618818726462	Marionette	WARN	TLS certificate errors will be ignored for this session
+1618818728885	Marionette	INFO	Stopped listening on port 32769
+console.error: "Exception while opening the toolbox" "Error: No tool found" (new Error("No tool found", "resource://devtools/client/framework/toolbox.js", 2677))
+selectTool@resource://devtools/client/framework/toolbox.js:2677:13
+open/<@resource://devtools/client/framework/toolbox.js:899:18
+
+console.error: "Error while calling actor 'watcher's method 'watchResources'" "topBrowsingContext is null"
+console.error: "getWatchingBrowsingContexts@resource://devtools/server/actors/watcher/target-helpers/frame-helper.js:171:9\naddWatcherDataEntry@resource://devtools/server/actors/watcher/target-helpers/frame-helper.js:91:55\nwatchResources@resource://devtools/server/actors/watcher.js:349:32\n"
+console.error: "Error while listing frames" (new Error("Connection closed, pending request to server0.conn0.child3/frameTarget1, type listFrames failed\n\nRequest stack:\nrequest@resource://devtools/shared/protocol/Front.js:288:14\ngenerateRequestMethods/</frontProto[name]@resource://devtools/shared/protocol/Front/FrontClassWithSpec.js:46:19\n_listFrames@resource://devtools/client/framework/toolbox.js:3100:44\nopen/<@resource://devtools/client/framework/toolbox.js:824:34\n", "resource://devtools/shared/protocol/Front.js", 99))
+JavaScript error: resource://devtools/client/framework/toolbox.js, line 3756: TypeError: this.toolbarButtons is undefined
+JavaScript error: resource://devtools/client/framework/toolbox.js, line 1668: TypeError: toolDefinition is null
+JavaScript error: resource://devtools/shared/protocol/Front.js, line 99: Error: Connection closed, pending request to server0.conn0.watcher4, type getTargetConfigurationActor failed
+
+Request stack:
+request@resource://devtools/shared/protocol/Front.js:288:14
+generateRequestMethods/</frontProto[name]@resource://devtools/shared/protocol/Front/FrontClassWithSpec.js:46:19
+getTargetConfigurationActor@resource://devtools/client/fronts/watcher.js:95:52
+updateConfiguration@resource://devtools/shared/resources/target-list.js:588:64
+_applyServiceWorkersTestingSettings@resource://devtools/client/framework/toolbox.js:2084:21
+open/<@resource://devtools/client/framework/toolbox.js:842:12
+
+JavaScript error: resource://devtools/shared/protocol/Front.js, line 99: Error: Connection closed, pending request to server0.conn0.watcher4, type getTargetConfigurationActor failed
+
+Request stack:
+request@resource://devtools/shared/protocol/Front.js:288:14
+generateRequestMethods/</frontProto[name]@resource://devtools/shared/protocol/Front/FrontClassWithSpec.js:46:19
+getTargetConfigurationActor@resource://devtools/client/fronts/watcher.js:95:52
+updateConfiguration@resource://devtools/shared/resources/target-list.js:588:64
+_applyJavascriptEnabledSettings@resource://devtools/client/framework/toolbox.js:2093:21
+open/<@resource://devtools/client/framework/toolbox.js:843:12
+
+JavaScript error: resource://devtools/shared/protocol/Front.js, line 99: Error: Connection closed, pending request to server0.conn0.watcher4, type watchResources failed
+
+Request stack:
+request@resource://devtools/shared/protocol/Front.js:288:14
+generateRequestMethods/</frontProto[name]@resource://devtools/shared/protocol/Front/FrontClassWithSpec.js:46:19
+_startListening@resource://devtools/shared/resources/resource-watcher.js:674:31
+watchResources@resource://devtools/shared/resources/resource-watcher.js:149:20
+
+JavaScript error: resource://devtools/shared/protocol/Front.js, line 99: Error: Connection closed, pending request to server0.conn0.watcher4, type getTargetConfigurationActor failed
+
+Request stack:
+request@resource://devtools/shared/protocol/Front.js:288:14
+generateRequestMethods/</frontProto[name]@resource://devtools/shared/protocol/Front/FrontClassWithSpec.js:46:19
+getTargetConfigurationActor@resource://devtools/client/fronts/watcher.js:95:52
+updateConfiguration@resource://devtools/shared/resources/target-list.js:588:64
+_applyCacheSettings@resource://devtools/client/framework/toolbox.js:2069:27
+open/<@resource://devtools/client/framework/toolbox.js:841:12
+
+!!! error running onStopped callback: TypeError: callback is not a function
+1618818729294	RemoteAgent	ERROR	unable to stop listener: [Exception... "Component returned failure code: 0x8000ffff (NS_ERROR_UNEXPECTED) [nsIWindowMediator.getEnumerator]"  nsresult: "0x8000ffff (NS_ERROR_UNEXPECTED)"  location: "JS frame :: chrome://remote/content/cdp/observers/TargetObserver.jsm :: stop :: line 61"  data: no] Stack trace: stop()@TargetObserver.jsm:61
+unwatchForTabs()@TargetList.jsm:71
+unwatchForTargets()@TargetList.jsm:38
+destructor()@TargetList.jsm:110
+close()@RemoteAgent.jsm:124
+1618818757248	geckodriver	INFO	Listening on 127.0.0.1:43641
+1618818757254	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "0" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilekGXDTY"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+DevTools listening on ws://localhost:36495/devtools/browser/3ba334bb-916d-4fa0-991d-14bc2f071a75
+1618818759224	Marionette	INFO	Listening on port 44659
+1618818759293	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.warn: "Async method failed in safeAsyncMethod" (new Error("Connection closed, pending request to server0.conn0.child3/domwalker24, type cancelPick failed\n\nRequest stack:\nrequest@resource://devtools/shared/protocol/Front.js:288:14\ngenerateRequestMethods/</frontProto[name]@resource://devtools/shared/protocol/Front/FrontClassWithSpec.js:46:19\ncancelPick@resource://devtools/client/fronts/walker.js:546:18\nexports.safeAsyncMethod/<@resource://devtools/shared/async-utils.js:57:25\n_onInspectorFrontDestroyed@resource://devtools/client/inspector/node-picker.js:114:18\nstop@resource://devtools/client/inspector/node-picker.js:174:18\n_destroyToolbox@resource://devtools/client/framework/toolbox.js:3718:24\ndestroy@resource://devtools/client/framework/toolbox.js:3652:10\n_forgetBrowserWindow@resource://devtools/client/framework/devtools-browser.js:709:17\nhandleEvent@resource://devtools/client/framework/devtools-browser.js:730:26\n", "resource://devtools/shared/protocol/Front.js", 99))
+!!! error running onStopped callback: TypeError: callback is not a function
+1618818766522	Marionette	INFO	Stopped listening on port 44659
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1618818766739	RemoteAgent	ERROR	unable to stop listener: [Exception... "Component returned failure code: 0x8000ffff (NS_ERROR_UNEXPECTED) [nsIWindowMediator.getEnumerator]"  nsresult: "0x8000ffff (NS_ERROR_UNEXPECTED)"  location: "JS frame :: chrome://remote/content/cdp/observers/TargetObserver.jsm :: stop :: line 61"  data: no] Stack trace: stop()@TargetObserver.jsm:61
+unwatchForTabs()@TargetList.jsm:71
+unwatchForTargets()@TargetList.jsm:38
+destructor()@TargetList.jsm:110
+close()@RemoteAgent.jsm:124
+1618818827271	geckodriver	INFO	Listening on 127.0.0.1:58365
+1618818827277	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "0" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilelZLE6k"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+DevTools listening on ws://localhost:44181/devtools/browser/9d3aed60-23fa-4c20-a100-ff09d9841024
+1618818829345	Marionette	INFO	Listening on port 38933
+1618818829419	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'MarionetteEvents'
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'MarionetteEvents'
+console.warn: "Async method failed in safeAsyncMethod" (new Error("Connection closed, pending request to server0.conn0.child3/domwalker24, type cancelPick failed\n\nRequest stack:\nrequest@resource://devtools/shared/protocol/Front.js:288:14\ngenerateRequestMethods/</frontProto[name]@resource://devtools/shared/protocol/Front/FrontClassWithSpec.js:46:19\ncancelPick@resource://devtools/client/fronts/walker.js:546:18\nexports.safeAsyncMethod/<@resource://devtools/shared/async-utils.js:57:25\n_onInspectorFrontDestroyed@resource://devtools/client/inspector/node-picker.js:114:18\nstop@resource://devtools/client/inspector/node-picker.js:174:18\n_destroyToolbox@resource://devtools/client/framework/toolbox.js:3718:24\ndestroy@resource://devtools/client/framework/toolbox.js:3652:10\n_forgetBrowserWindow@resource://devtools/client/framework/devtools-browser.js:709:17\nhandleEvent@resource://devtools/client/framework/devtools-browser.js:730:26\n", "resource://devtools/shared/protocol/Front.js", 99))
+!!! error running onStopped callback: TypeError: callback is not a function
+1618818834158	Marionette	INFO	Stopped listening on port 38933
+1618818834392	RemoteAgent	ERROR	unable to stop listener: [Exception... "Component returned failure code: 0x8000ffff (NS_ERROR_UNEXPECTED) [nsIWindowMediator.getEnumerator]"  nsresult: "0x8000ffff (NS_ERROR_UNEXPECTED)"  location: "JS frame :: chrome://remote/content/cdp/observers/TargetObserver.jsm :: stop :: line 61"  data: no] Stack trace: stop()@TargetObserver.jsm:61
+unwatchForTabs()@TargetList.jsm:71
+unwatchForTargets()@TargetList.jsm:38
+destructor()@TargetList.jsm:110
+close()@RemoteAgent.jsm:124
+1618821267631	geckodriver	INFO	Listening on 127.0.0.1:54693
+1618821267636	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "0" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile1Ye9Jk"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+DevTools listening on ws://localhost:39069/devtools/browser/2bb90354-9a81-42cb-9ec4-2035a5253bf6
+1618821269777	Marionette	INFO	Listening on port 46153
+1618821269876	Marionette	WARN	TLS certificate errors will be ignored for this session
+1618821272550	Marionette	INFO	Stopped listening on port 46153
+JavaScript error: resource://gre/modules/AsyncShutdown.jsm, line 575: NotFoundError: No such JSWindowActor 'MarionetteEvents'
+JavaScript error: resource://gre/modules/AsyncShutdown.jsm, line 575: NotFoundError: No such JSWindowActor 'MarionetteEvents'
+console.error: "Error when attaching target:" (new Error("Connection closed, pending request to server0.conn0.child3/thread21, type isAttached failed\n\nRequest stack:\nrequest@resource://devtools/shared/protocol/Front.js:288:14\ngenerateRequestMethods/</frontProto[name]@resource://devtools/shared/protocol/Front/FrontClassWithSpec.js:46:19\nattachThread@resource://devtools/client/fronts/targets/target-mixin.js:538:33\n", "resource://devtools/shared/protocol/Front.js", 99))
+console.error: "Error when attaching target:" (new Error("Connection closed, pending request to server0.conn0.child3/thread21, type isAttached failed\n\nRequest stack:\nrequest@resource://devtools/shared/protocol/Front.js:288:14\ngenerateRequestMethods/</frontProto[name]@resource://devtools/shared/protocol/Front/FrontClassWithSpec.js:46:19\nattachThread@resource://devtools/client/fronts/targets/target-mixin.js:538:33\n", "resource://devtools/shared/protocol/Front.js", 99))
+console.error: "Error while listing frames" (new Error("Can not send request 'listFrames' because front 'browsingContextTarget' is already destroyed.", "resource://devtools/shared/protocol/Front/FrontClassWithSpec.js", 28))
+console.error: "Exception while opening the toolbox" "Error: Descriptor already destroyed for target: Target:server0.conn0.child3/frameTarget1" (new Error("Descriptor already destroyed for target: Target:server0.conn0.child3/frameTarget1", "resource://devtools/client/fronts/targets/target-mixin.js", 101))
+get descriptorFront@resource://devtools/client/fronts/targets/target-mixin.js:101:15
+get isLocalTab@resource://devtools/client/fronts/targets/target-mixin.js:251:15
+isTargetSupported@resource://devtools/client/definitions.js:526:34
+_commandIsVisible@resource://devtools/client/framework/toolbox.js:2208:31
+_createButtonState@resource://devtools/client/framework/toolbox.js:1556:29
+_buildButtons/<@resource://devtools/client/framework/toolbox.js:1875:27
+_buildButtons@resource://devtools/client/framework/toolbox.js:1874:20
+open/<@resource://devtools/client/framework/toolbox.js:871:12
+
+JavaScript error: resource://devtools/client/framework/toolbox.js, line 3756: TypeError: this.toolbarButtons is undefined
+JavaScript error: resource://devtools/shared/protocol/Front/FrontClassWithSpec.js, line 28: Error: Can not send request 'getTargetConfigurationActor' because front 'watcher' is already destroyed.
+JavaScript error: resource://devtools/shared/protocol/Front/FrontClassWithSpec.js, line 28: Error: Can not send request 'getTargetConfigurationActor' because front 'watcher' is already destroyed.
+JavaScript error: resource://devtools/shared/protocol/Front/FrontClassWithSpec.js, line 28: Error: Can not send request 'getTargetConfigurationActor' because front 'watcher' is already destroyed.
+JavaScript error: resource://devtools/client/shared/WeakMapMap.js, line 73: TypeError: WeakMap key must be an object, got key
+JavaScript error: resource://devtools/client/framework/toolbox.js, line 1668: TypeError: toolDefinition is null
+JavaScript error: resource://devtools/shared/protocol/Front/FrontClassWithSpec.js, line 28: Error: Can not send request 'watchResources' because front 'watcher' is already destroyed.
+!!! error running onStopped callback: TypeError: callback is not a function
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1618821272965	RemoteAgent	ERROR	unable to stop listener: [Exception... "Component returned failure code: 0x8000ffff (NS_ERROR_UNEXPECTED) [nsIWindowMediator.getEnumerator]"  nsresult: "0x8000ffff (NS_ERROR_UNEXPECTED)"  location: "JS frame :: chrome://remote/content/cdp/observers/TargetObserver.jsm :: stop :: line 61"  data: no] Stack trace: stop()@TargetObserver.jsm:61
+unwatchForTabs()@TargetList.jsm:71
+unwatchForTargets()@TargetList.jsm:38
+destructor()@TargetList.jsm:110
+close()@RemoteAgent.jsm:124

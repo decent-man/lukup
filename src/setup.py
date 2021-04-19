@@ -2,9 +2,10 @@
 import sys
 import time
 import pyautogui
-from selenium import webdriver
 import json
 from dataclasses import dataclass, asdict
+from selenium import webdriver
+from selenium.webdriver.common.by import By
 
 #=========VAR's============
 FIRE_PATH='/home/rakshit/Downloads/geckodriver'
@@ -19,7 +20,7 @@ VALID_QUERY=sys.argv[5:]
 
 DEFAULT_UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36 RuxitSynthetic/1.0 v9139690441 t38550 ath9b965f92 altpub cvcv=2'
 DEFAULT_REFERER = 'https://duckduckgo.com?q=wiki'
-SAMPLE_XPATH = '//*[@id="content"]'
+SAMPLE_XPATH = './/*[@id="content"]'
 TAG=""
 ATTRN=""
 ATTRTY=""
@@ -34,25 +35,25 @@ class PROFILE:
     URL: str
     SEP: str
     TAG_TYPE: str
-    ATTR_NAM: str
+    ATTR_ID: str
     ATTR_VAL: str
 
-@dataclass
-class XPROFILE:
-    AGENT: str
-    REFERER: str
-    URL: str
-    SEP: str
-    XPATH: str
+# @dataclass
+# class XPROFILE:
+    # AGENT: str
+    # REFERER: str
+    # URL: str
+    # SEP: str
+    # XPATH: str
 #=========================
 
 #=====CORE_FUNCTION========
 def coreSetup():
-   ##Search for a GIBBERISH query user!
+   #Search for a GIBBERISH query user!
    gib1URL = Gen_STATIC(GIBRL,GIBQUERY) 
-   ##Search for a GIBBERISH query again user!
+   #Search for a GIBBERISH query again user!
    gib2URL = Gen_STATIC(GIB2RL,GIB2QUERY)
-   print("\nGibberish1 URL:" + GIBRL + "\nGibberish Parsed:" + gib1URL + "\n\nGibberish2 URL:" + GIB2RL + "\nGibberish2 Parsed:" + gib2URL + "\n" )
+   # print("\nGibberish1 URL:" + GIBRL + "\nGibberish Parsed:" + gib1URL + "\n\nGibberish2 URL:" + GIB2RL + "\nGibberish2 Parsed:" + gib2URL + "\n" )
 
    if gib2URL == gib1URL:
        browser = webdriver.Firefox(executable_path=FIRE_PATH)
@@ -62,11 +63,16 @@ def coreSetup():
        # browser.find_element_by_tag_name('body').send_keys(Keys.ALT + Keys.SHIFT + 'f') # this works for some reason - only strokes sent to the body work
        pyautogui.press('f12')
        pyautogui.hotkey('ctrl','shift','c')
-       #CALL WINDOW TO FEED THE TAG
-       # Gen_JSON(PROFILE(,,,,),filename) || Gen_JSON(XPROFILE(,,,,),filename)
-       time.sleep(15)
+       #CALL WINDOW TO FEED THE TAGS
+       XPATH_MODE=True
+       if XPATH_MODE is True:
+           elem = browser.find_element(By.XPATH,'.//*[@id="content"]')
+           manual_list = XP_to_Manual(elem.tag_name,SAMPLE_XPATH)
+           Write_JSON(Gen_JSON(PROFILE(DEFAULT_UA,DEFAULT_REFERER,STATIC_URL,DEFAULT_SEP,manual_list[0],manual_list[1],manual_list[2])),SAMPLE_FILENAME)
+       else:
+           Write_JSON(Gen_JSON(PROFILE(DEFAULT_UA,DEFAULT_REFERER,STATIC_URL,DEFAULT_SEP,TAG_ID,ATTRIBUTE_ID,ATTRIBUTE_VALUE)),SAMPLE_FILENAME)
+       # time.sleep(15)
        browser.quit()
-       Write_JSON(Gen_JSON(XPROFILE(DEFAULT_UA,DEFAULT_REFERER,gib2URL,DEFAULT_SEP,SAMPLE_XPATH)),SAMPLE_FILENAME)
        
    else:
       #PARSE_MISMATCH - do some extra hoops
@@ -86,6 +92,14 @@ def Gen_JSON(profileobj):
 
 def Write_JSON(jsonobj,siteName):
     open(siteName,'x').write(jsonobj)
+
+def XP_to_Manual(tagname,xpath):
+    import re
+    TAG_LIST = [tagname]                
+    TAG_LIST += re.findall('@[a-z-]+=',xpath)
+    TAG_LIST += re.findall('\"[a-z-]+\"',xpath)
+    print(TAG_LIST)
+    return [TAG_LIST[0],TAG_LIST[1][1:-1],TAG_LIST[2][1:-1]]
 #==========================
 
-# coreSetup()
+coreSetup()
