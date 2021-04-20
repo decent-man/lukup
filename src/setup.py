@@ -7,14 +7,14 @@ from selenium.webdriver.common.by import By
 
 #=========VAR's============
 FIRE_PATH='/home/rakshit/Downloads/geckodriver'
-GIBRL=sys.argv[1]
-GIBQUERY=sys.argv[2]
-GIB2RL=sys.argv[3]
-GIB2QUERY=sys.argv[4]
+# GIBRL=sys.argv[1]
+# GIBQUERY=sys.argv[2]
+# GIB2RL=sys.argv[3]
+# GIB2QUERY=sys.argv[4]
 
-DEFAULT_SEP="+"
+# DEFAULT_SEP="+"
 
-VALID_QUERY=sys.argv[5:]
+# VALID_QUERY=sys.argv[5:]
 
 DEFAULT_UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36 RuxitSynthetic/1.0 v9139690441 t38550 ath9b965f92 altpub cvcv=2'
 DEFAULT_REFERER = 'https://duckduckgo.com?q=wiki'
@@ -25,41 +25,29 @@ ATTRTY=""
 SAMPLE_FILENAME="ArchWiki"
 #==========================
 
-#=====PROFILE_DATACLASS==========
-@dataclass
-class PROFILE:
-    AGENT: str
-    REFERER: str
-    URL: str
-    SEP: str
-    TAG_TYPE: str
-    ATTR_ID: str
-    ATTR_VAL: str
-#=========================
+#=====CORE_FUNCTION-Has the raw solo code========
+# def coreSetup():
+   # staticParsed = (Gen_STATIC(GIBRL,GIBQUERY),Gen_STATIC(GIB2RL,GIB2QUERY)) #Both query's parsed and stored into a tuple.
 
-#=====CORE_FUNCTION========
-def coreSetup():
-   staticParsed = (Gen_STATIC(GIBRL,GIBQUERY),Gen_STATIC(GIB2RL,GIB2QUERY)) #Both query's parsed and stored into a tuple.
-
-   if staticParsed[0] == staticParsed[1]:
-       browser = webdriver.Firefox(executable_path=FIRE_PATH)
-       browser.get(genURL(staticParsed[1],VALID_QUERY,DEFAULT_SEP))
-       pyautogui.press('f12')
-       pyautogui.hotkey('ctrl','shift','c')
-       #CALL WINDOW TO FEED THE TAGS
-       XPATH_MODE=True
-       STATIC_URL=staticParsed[1]
-       if XPATH_MODE is True:
-           elem = browser.find_element(By.XPATH,_xpath_)
-           Write_JSON(Gen_JSON(PROFILE(DEFAULT_UA,DEFAULT_REFERER,STATIC_URL,DEFAULT_SEP,manual_list[0],manual_list[1],manual_list[2])),SAMPLE_FILENAME)
-       else:
-           Write_JSON(Gen_JSON(PROFILE(DEFAULT_UA,DEFAULT_REFERER,STATIC_URL,DEFAULT_SEP,TAG_ID,ATTRIBUTE_ID,ATTRIBUTE_VALUE)),SAMPLE_FILENAME)
-       # time.sleep(15)
-       browser.quit()
+   # if staticParsed[0] == staticParsed[1]:
+       # browser = webdriver.Firefox(executable_path=FIRE_PATH)
+       # browser.get(genURL(staticParsed[1],VALID_QUERY,DEFAULT_SEP))
+       # pyautogui.press('f12')
+       # pyautogui.hotkey('ctrl','shift','c')
+       # #CALL WINDOW TO FEED THE TAGS
+       # XPATH_MODE=True
+       # STATIC_URL=staticParsed[1]
+       # if XPATH_MODE is True:
+           # elem = browser.find_element(By.XPATH,_xpath_)
+           # Write_JSON(Gen_JSON(PROFILE(DEFAULT_UA,DEFAULT_REFERER,STATIC_URL,DEFAULT_SEP,manual_list[0],manual_list[1],manual_list[2])),SAMPLE_FILENAME)
+       # else:
+           # Write_JSON(Gen_JSON(PROFILE(DEFAULT_UA,DEFAULT_REFERER,STATIC_URL,DEFAULT_SEP,TAG_ID,ATTRIBUTE_ID,ATTRIBUTE_VALUE)),SAMPLE_FILENAME)
+       # # time.sleep(15)
+       # browser.quit()
        
-   else:
-      #PARSE_MISMATCH - do some extra hoops
-      print("REGEX_FAILURE:PARSE:1")
+   # else:
+      # #PARSE_MISMATCH - do some extra hoops
+      # print("REGEX_FAILURE:PARSE:1")
 #==========================
 
 #=====THE_FUNDAMENTALS=====
@@ -124,4 +112,3 @@ def Write_JSON(jsonobj,siteName):
     open(siteName,'w').write(jsonobj)
 #==========================
 
-# coreSetup()
