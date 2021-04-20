@@ -4,7 +4,7 @@ import lxml
 import requests
 from bs4 import BeautifulSoup as BS
 
-def infoScraper(PROFILE):
+def infoScraper(PROFILE,_query_):
     LINE_CHAR = "="
     
     with open(PROFILE) as config:
@@ -13,7 +13,8 @@ def infoScraper(PROFILE):
         U_A = cfg['AGENT']
         REF = cfg['REFERER']
         U_SEP = cfg['SEP'] 
-        URL   = cfg['URL'] + U_SEP.join(str(word) for word in sys.argv[2:])
+        # URL   = cfg['URL'] + U_SEP.join(str(word) for word in sys.argv[2:])
+        URL   = cfg['URL'] + _query_.replace(" ",U_SEP)
         TAG   = cfg['TAG_TYPE']
         ATTRID = cfg['ATTR_NAM']
         ATTRVAL = cfg['ATTR_VAL']
@@ -34,7 +35,7 @@ def infoScraper(PROFILE):
         # print("<EOF>")
         # print("  Done Closing requests.")
 
-print(infoScraper(sys.argv[1]))
+print(infoScraper(sys.argv[1],sys.argv[2]))
     # @dataclass
     # class O_Model:
          #DATA CLASS GENERATOR CODE

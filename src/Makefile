@@ -9,10 +9,8 @@ S_ARG4=DA3MON
 S_ARG5=AMDGPU PRO
 
 MASTER=master.py
-#M_FILE=profiles/aw.json
-M_FILE=ArchWiki
-M_ARG2=AMDGPU
-M_ARG3=PRO
+M_FILE=profiles/ArchWiki
+M_ARG2="AMDGPU PRO"
 
 
 setup: setup.py
@@ -20,6 +18,6 @@ setup: setup.py
 test:
 	$(INTERP) $(T_FILE) $(S_ARG1) $(S_ARG2) $(S_ARG3) $(S_ARG4) $(S_ARG5) 
 master:
-	./$(MASTER) $(M_FILE) $(M_ARG2) $(M_ARG3)
+	./$(MASTER) $(M_FILE) $(M_ARG2)
 cl:
 	rm -rf geckodriver.log __pycache__
