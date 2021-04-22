@@ -1,9 +1,8 @@
-import win32clipboard
+import pyperclip
 
 
 def clipcopy():
-    win32clipboard.OpenClipboard()
-    data = win32clipboard.GetClipboardData()
-    win32clipboard.CloseClipboard()
-    print (data)
+    import pyperclip
+    data = pyperclip.paste()
+    print(data)
     return data
