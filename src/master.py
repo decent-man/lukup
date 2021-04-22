@@ -4,10 +4,10 @@ import lxml
 import requests
 from bs4 import BeautifulSoup as BS
 
-def infoScraper(PROFILE,_query_):
+def infoScraper(_profile_file_,_query_):
     LINE_CHAR = "="
     
-    with open(PROFILE) as config:
+    with open(_profile_file_) as config:
         import json
         cfg   = json.load(config)
         U_A = cfg['AGENT']
@@ -26,6 +26,14 @@ def infoScraper(PROFILE,_query_):
         mainContent = html.find_all(TAG , attrs={ATTRID:ATTRVAL})
         
     return (title,mainContent)
+
+print(infoScraper(sys.argv[1],sys.argv[2]))
+    # print("\n=====================================\n")
+    # print("Seperator: " + U_SEP + "\nProcessed Link:" + URL)
+    # print(URL)
+    # print(SESSION_HEADER)
+    # print("\n=====================================\n")
+###########################################################3
         # print(html.prettify())
         # print(LINE_CHAR*len(URL))
         # print("\t" + title.text + "\n" + URL)
@@ -34,10 +42,3 @@ def infoScraper(PROFILE,_query_):
             # print(content.text)
         # print("<EOF>")
         # print("  Done Closing requests.")
-
-print(infoScraper(sys.argv[1],sys.argv[2]))
-    # print("\n=====================================\n")
-    # print("Seperator: " + U_SEP + "\nProcessed Link:" + URL)
-    # print(URL)
-    # print(SESSION_HEADER)
-    # print("\n=====================================\n")
