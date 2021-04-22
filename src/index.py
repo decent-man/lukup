@@ -53,7 +53,7 @@ def closewin3():
     win3.destroy()
 
 def clicknext():  
-    win3 = Tk()                         # next click karne pe khulne wali window
+    win3 = Tk()                         # next click karne pe khulne wali window fsdfsadaasf
     win3.title('window 3')
     win3.geometry("1000x1000")
     # win3.configure(bg=black)
