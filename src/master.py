@@ -25,7 +25,7 @@ def infoScraper(PROFILE,_query_):
         title = html.find('title')
         mainContent = html.find_all(TAG , attrs={ATTRID:ATTRVAL})
         
-    return mainContent
+    return (title,mainContent)
         # print(html.prettify())
         # print(LINE_CHAR*len(URL))
         # print("\t" + title.text + "\n" + URL)

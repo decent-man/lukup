@@ -11,7 +11,7 @@ print(infoScraper(file_path,search_query)) # <= This is only a test print. Only 
 #           It takes file name as first input
 
 #
-#     It returns the html segment as output for now. I will make it so it returns only text and title.
+#     It returns the (title,html_code) , a tuple, as output for now. I will make it so it returns only text instead of the raw html. But for now it is how it is.
 
 
 #
