@@ -5,75 +5,33 @@ import json
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-#=========VAR's============
-FIRE_PATH='/home/rakshit/Downloads/geckodriver'
-# GIBRL=sys.argv[1]
-# GIBQUERY=sys.argv[2]
-# GIB2RL=sys.argv[3]
-# GIB2QUERY=sys.argv[4]
-
-# DEFAULT_SEP="+"
-
-# VALID_QUERY=sys.argv[5:]
-
-DEFAULT_UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36 RuxitSynthetic/1.0 v9139690441 t38550 ath9b965f92 altpub cvcv=2'
-DEFAULT_REFERER = 'https://duckduckgo.com?q=wiki'
-SAMPLE_XPATH = './/*[@id="content"]'
-TAG=""
-ATTRN=""
-ATTRTY=""
-SAMPLE_FILENAME="ArchWiki"
-#==========================
-
-#=====CORE_FUNCTION-Has the raw solo code========
-# def coreSetup():
-   # staticParsed = (Gen_STATIC(GIBRL,GIBQUERY),Gen_STATIC(GIB2RL,GIB2QUERY)) #Both query's parsed and stored into a tuple.
-
-   # if staticParsed[0] == staticParsed[1]:
-       # browser = webdriver.Firefox(executable_path=FIRE_PATH)
-       # browser.get(genURL(staticParsed[1],VALID_QUERY,DEFAULT_SEP))
-       # pyautogui.press('f12')
-       # pyautogui.hotkey('ctrl','shift','c')
-       # #CALL WINDOW TO FEED THE TAGS
-       # XPATH_MODE=True
-       # STATIC_URL=staticParsed[1]
-       # if XPATH_MODE is True:
-           # elem = browser.find_element(By.XPATH,_xpath_)
-           # Write_JSON(Gen_JSON(PROFILE(DEFAULT_UA,DEFAULT_REFERER,STATIC_URL,DEFAULT_SEP,manual_list[0],manual_list[1],manual_list[2])),SAMPLE_FILENAME)
-       # else:
-           # Write_JSON(Gen_JSON(PROFILE(DEFAULT_UA,DEFAULT_REFERER,STATIC_URL,DEFAULT_SEP,TAG_ID,ATTRIBUTE_ID,ATTRIBUTE_VALUE)),SAMPLE_FILENAME)
-       # # time.sleep(15)
-       # browser.quit()
-       
-   # else:
-      # #PARSE_MISMATCH - do some extra hoops
-      # print("REGEX_FAILURE:PARSE:1")
-#==========================
-
 #=====THE_FUNDAMENTALS=====
-def linkAnalyzer(GIBRL,GIBQUERY,GIB2RL,GIB2QUERY):
+def linkAnalyzer(GIBRL,GIBQUERY,GIB2RL,GIB2QUERY): ## <= Compares url's and queries and strips out the static part of the url.
     #
     def Gen_STATIC(rawlink,query):
        query_pos = rawlink.lower().find(query.lower())
-       return str(rawlink[0:query_pos]) # Cuts the string to the point until the searched query word is found.
+       return str(rawlink[0:query_pos]) #(Cuts the string to the point until the searched query word is found.)
     #
     staticParsed = (Gen_STATIC(GIBRL,GIBQUERY),Gen_STATIC(GIB2RL,GIB2QUERY)) #Both query's parsed and stored into a tuple.
     if staticParsed[0] == staticParsed[1]:
-        return str(staticParsed[1])
+        return str(staticParsed[1])         ## <= Returns the string containing the static part of the url. Will be used by the next function.
     else:
         return None
 
-def genURL(static,query,seperator):
-   return static + query.replace(" ",seperator) #combines the static_URL with the valid search query and replaces spaces with '+'
 
-def browserInit(_url_,driverloc):
+def genURL(static,query,seperator='+'): ## <= Generates a web acceptable url. Will be used to feed link to open in the browser.
+   return static + query.replace(" ",seperator) #(combines the static_URL with the valid search query and replaces spaces with '+')
+
+
+def browserInit(_url_,driverloc,_browserName_): ## <= Opens the browser->Inspector->SelectionMode. Returns the webdriver object for use later.
        browser = webdriver.Firefox(executable_path=driverloc) #more browser code
        browser.get(_url_)
        pyautogui.press('f12')
        pyautogui.hotkey('ctrl','shift','c')
        return browser
 
-def profileGen():
+
+def profileGen():                ## <= Used to generate the 'profile.json'. Not usable directly. Subfunctions 'xpathGen' OR 'manualGen' to be called accordingly.
     from dataclasses import dataclass, asdict
     @dataclass
     class PROFILE:
@@ -84,11 +42,12 @@ def profileGen():
         TAG_TYPE: str
         ATTR_ID: str
         ATTR_VAL: str
+
     STOCK_UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36 RuxitSynthetic/1.0 v9139690441 t38550 ath9b965f92 altpub cvcv=2'
     STOCK_REFERER = 'https://duckduckgo.com?q=wiki'
-    STATIC_URL=staticParsed[1]
+    STOCK_SEP='+'
     #
-    def xpathGen(_driver_,_xpath_):
+    def xpathGen(_static_,_filename_,_driver_,_xpath_): ## <= Generates profile from xpath. Does not return anything.
         ##
         def XP_to_Manual(tagname,xpath):
             import re
@@ -98,11 +57,10 @@ def profileGen():
             return [TAG_LIST[0],TAG_LIST[1][1:-1],TAG_LIST[2][1:-1]]
         ##
         manual_list = XP_to_Manual(_driver_.find_element(By.XPATH,_xpath_).tag_name,_xpath_)
-        Write_JSON(Gen_JSON(PROFILE(STOCK_UA,STOCK_REFERER,STATIC_URL,DEFAULT_SEP,manual_list[0],manual_list[1],manual_list[2])),SAMPLE_FILENAME)
+        Write_JSON(Gen_JSON(PROFILE(STOCK_UA,STOCK_REFERER,_static_,STOCK_SEP,manual_list[0],manual_list[1],manual_list[2])),_filename_)
     #
-    def manualGen():
-        Write_JSON(Gen_JSON(PROFILE(STOCK_UA,STOCK_REFERER,STATIC_URL,DEFAULT_SEP,TAG_ID,ATTRIBUTE_ID,ATTRIBUTE_VALUE)),SAMPLE_FILENAME)
-#==========================
+    def manualGen(_static_,_filename_,_tagid_,_attrid_,_attrval_): ## <= Generates profile from manual entries. Does not return anything.
+        Write_JSON(Gen_JSON(PROFILE(STOCK_UA,STOCK_REFERER,_static_,STOCK_SEP,_tagid_,_attrid_,_attrval_)),_filename_)
 
 #=====GENERATORS===========
 def Gen_JSON(profileobj):
@@ -110,5 +68,7 @@ def Gen_JSON(profileobj):
 
 def Write_JSON(jsonobj,siteName):
     open(siteName,'w').write(jsonobj)
-#==========================
+
+#==========x===============
+
 
