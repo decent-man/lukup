@@ -36,10 +36,6 @@ def infoScraper(PROFILE,_query_):
         # print("  Done Closing requests.")
 
 print(infoScraper(sys.argv[1],sys.argv[2]))
-    # @dataclass
-    # class O_Model:
-         #DATA CLASS GENERATOR CODE
-    
     # print("\n=====================================\n")
     # print("Seperator: " + U_SEP + "\nProcessed Link:" + URL)
     # print(URL)
