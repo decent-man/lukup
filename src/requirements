@@ -15,3 +15,6 @@ Internal Python Modules(most likely comes default):
 1. sys
 2. json
 3. dataclasses
+
+Optional:
+Make - used to quick compile files. Used for testing.
