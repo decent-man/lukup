@@ -1,0 +1,17 @@
+External Python Modules:
+1. tkinter
+2. pyperclip
+3. lxml
+4. requests
+5. selenium
+6. pyautogui
+7. BeautifulSoup
+
+Other:
+Selenium Webdriver: Chrome OR Firefox OR Edge OR Internet Explorer OR Opera 
+Download from:-  https://www.selenium.dev/documentation/en/webdriver/driver_requirements/#quick-reference
+
+Internal Python Modules(most likely comes default):
+1. sys
+2. json
+3. dataclasses
