@@ -23,9 +23,12 @@ def infoScraper(_profile_file_,_query_):
         RQ.headers = { "User-Agent" : U_A , "Referer": REF }
         html = BS(RQ.get(URL,stream=True).text, 'lxml')
         title = html.find('title')
-        mainContent = html.find_all(TAG , attrs={ATTRID:ATTRVAL})
+        mainContent = html.find(TAG , attrs={ATTRID:ATTRVAL})
+        # contentMain = []
+        # for content in mainContent:
+            # contentMain.append(content.text)
         
-    return (title,mainContent)
+    return (title.text,mainContent.text)
 
 print(infoScraper(sys.argv[1],sys.argv[2]))
     # print("\n=====================================\n")
