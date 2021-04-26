@@ -75,10 +75,9 @@ def clicknext():
     instructions = Label(win3,text="INSTRUCTIONS",bg=black, fg=yellow, font="25").place(x=350,y=10)
     label6 = Label(win3, text="Element", bg=black, fg=yellow, font="30")
     label6.place(x=60, y=50)
-    b4 = Button(win3, text="Test", command= testclick, bg=yellow, fg=black, font="15").place(x=220,y=335)
+    # b4 = Button(win3, text="Test", bg=yellow, fg=black, font="15").place(x=220,y=335)
     cbox = ttk.Combobox(win3, values=["XPATH", "CUSTOM"], state="readonly")
-    cbox.place(x=60, y=100)
-    cbox.current(0)    
+    cbox.place(x=60, y=100)    
     cbox.bind("<<ComboboxSelected>>", callbackFunc)
     global selection
     if cbox.get() == 'XPATH':        
@@ -88,14 +87,14 @@ def clicknext():
     
 def callbackFunc(event):
     selection = event.widget.get()
-    print(selection)
-    selection = ttk.Combobox(win3, width = 30)
-
-def testclick():
     if selection == 'CUSTOM':
         ifcustom()  
     if selection == 'XPATH':
         ifxpath()
+    selection = ttk.Combobox(win3, width = 30)
+
+# def testclick():
+
   
 
 def ifcustom():
@@ -113,6 +112,8 @@ def ifcustom():
     text10 = Entry(win3, width="40", bg=black, highlightthickness=1)
     text10.configure(highlightbackground = yellow, highlightcolor= yellow)
     text10.place(x=50,y=255)
+    b5 = Button(win3, text="Back", command = lambda:[clickanalyse(), clicknext()], bg=yellow, fg=black, font="15").place(x=160,y=335)
+    b6 = Button(win3, text="Next", bg=yellow, fg=black, font="15").place(x=260,y=335)
 
 def ifxpath():
     for widget in win3.winfo_children():
@@ -121,6 +122,8 @@ def ifxpath():
     text7 = Entry(win3, width="40", bg=black, highlightthickness=1)
     text7.configure(highlightbackground = yellow, highlightcolor= yellow)
     text7.place(x=50,y=130)
+    b5 = Button(win3, text="Back",command = lambda:[clickanalyse(), clicknext()], bg=yellow, fg=black, font="15").place(x=160,y=335)
+    b7 = Button(win3, text="Next", bg=yellow, fg=black, font="15").place(x=260,y=335)
 
 b2 = Button(root, text ="+ Add website", command = lambda:[addsite(), closeroot()], bg=yellow, fg=black, font="18").place(x=450,y=440)
 
