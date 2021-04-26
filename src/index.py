@@ -9,7 +9,7 @@ white = "FFFFFF"
 
 root = Tk()                         # main screen window
 root.title('Main window')
-root.geometry("600x500")
+root.geometry("600x500+300+130")
 root.resizable(width=False, height=False)
 root.configure(bg=black)
 
@@ -19,7 +19,7 @@ def closeroot():
 def openwin2():
     win2 = Tk()                     # search karne pe khulne wali window
     win2.title('info display(window 1)')
-    win2.geometry("600x500")
+    win2.geometry("600x500+300+130")
     win2.resizable(width=False, height=False)
     win2.configure(bg=black)
 
@@ -37,7 +37,7 @@ def addsite():
     global win3
     win3 = Tk()                         # add website karne pe khulne wali window
     win3.title('Link Analyzer(window 2)')
-    win3.geometry("500x400")
+    win3.geometry("500x400+300+130")
     win3.configure(bg=black)
     win3.resizable(width=False, height=False)
     label4 = Label(win3, text="URL Sample 1", bg=black, fg=yellow, font="12").place(x=50,y=70)
@@ -93,7 +93,10 @@ def callbackFunc(event):
         ifxpath()
     selection = ttk.Combobox(win3, width = 30)
 
-# def testclick():
+def test():
+    for widget in win3.winfo_children():
+        widget.destroy()
+    win3.title('info display')
 
   
 
@@ -112,8 +115,8 @@ def ifcustom():
     text10 = Entry(win3, width="40", bg=black, highlightthickness=1)
     text10.configure(highlightbackground = yellow, highlightcolor= yellow)
     text10.place(x=50,y=255)
-    b5 = Button(win3, text="Back", command = lambda:[clickanalyse(), clicknext()], bg=yellow, fg=black, font="15").place(x=160,y=335)
-    b6 = Button(win3, text="Next", bg=yellow, fg=black, font="15").place(x=260,y=335)
+    # b5 = Button(win3, text="Back", command = lambda:[clickanalyse(), clicknext()], bg=yellow, fg=black, font="15").place(x=160,y=335)
+    b6 = Button(win3, text="Test",command = test, bg=yellow, fg=black, font="15").place(x=220,y=335)
 
 def ifxpath():
     for widget in win3.winfo_children():
@@ -122,8 +125,8 @@ def ifxpath():
     text7 = Entry(win3, width="40", bg=black, highlightthickness=1)
     text7.configure(highlightbackground = yellow, highlightcolor= yellow)
     text7.place(x=50,y=130)
-    b5 = Button(win3, text="Back",command = lambda:[clickanalyse(), clicknext()], bg=yellow, fg=black, font="15").place(x=160,y=335)
-    b7 = Button(win3, text="Next", bg=yellow, fg=black, font="15").place(x=260,y=335)
+    # b5 = Button(win3, text="Back",command = lambda:[clickanalyse(), clicknext()], bg=yellow, fg=black, font="15").place(x=160,y=335)
+    b7 = Button(win3, text="Test", command=test, bg=yellow, fg=black, font="15").place(x=220,y=335)
 
 b2 = Button(root, text ="+ Add website", command = lambda:[addsite(), closeroot()], bg=yellow, fg=black, font="18").place(x=450,y=440)
 
