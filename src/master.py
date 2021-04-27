@@ -30,7 +30,7 @@ def infoScraper(_profile_file_,_query_):
         
     return (title.text,mainContent.text)
 
-print(infoScraper(sys.argv[1],sys.argv[2]))
+# print(infoScraper(sys.argv[1],sys.argv[2]))
     # print("\n=====================================\n")
     # print("Seperator: " + U_SEP + "\nProcessed Link:" + URL)
     # print(URL)

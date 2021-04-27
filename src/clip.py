@@ -5,4 +5,4 @@ def clipcopy():
     print(data)
     return data
 #Test run
-clipcopy()
+# clipcopy()
