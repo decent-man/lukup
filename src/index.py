@@ -24,11 +24,17 @@ text = Entry(root, width="30", fg=fgcolor, bg=bgcolor, textvariable = user_query
 text.configure(highlightbackground = fgcolor, highlightcolor= fgcolor)
 text.place(x=30,y=50)
 
-# print(listdir('./profiles'))
-profilelist = Listbox(root, fg=fgcolor, bg=bgcolor, highlightthickness=1)
+print(listdir('./profiles'))
+profilelist = tk.Listbox(root, fg=fgcolor, bg=bgcolor, highlightthickness=1)
 profilelist.configure(highlightbackground = fgcolor, highlightcolor= fgcolor)
 profilelist.insert("end", *listdir('./profiles'))
-# print(profilelist.curselection())
+
+def getElement(event):
+  selection = event.widget.curselection()
+  index = selection[0]
+  value = event.widget.get(index)
+  print(value)
+profilelist.bind('<<ListboxSelect>>', getElement)
 profilelist.place(x=30,y=150) 
 
 def closeroot():
@@ -40,8 +46,7 @@ def openwin2():
     win2.resizable(width=False, height=False)
     win2.configure(bg=bgcolor) 
     win2.overrideredirect(True)  
-    thecontent = infoScraper('./profiles/Wikipedia', clipcopy())
-    #print(thecontent) 
+    thecontent = infoScraper('./profiles/Wikipedia', clipcopy()) 
     label2 = Label(win2, text= thecontent[0], bg=bgcolor, fg=fgcolor).place(x=10,y=10)
     scroll = Scrollbar(win2)
     scroll.pack(side=RIGHT, fill=Y)
@@ -64,8 +69,6 @@ def addsite():
     win3.overrideredirect(True)
     exitbutton = Button(win3, text="x", command=win3.quit, bg=fgcolor, fg=bgcolor, width="2").place(x=475, y=1)
     win3.resizable(width=False, height=False)
-    # scroll = Scrollbar(win3)
-    # scroll.pack(side=RIGHT, fill = Y)
     instructions = Text(win3, width="24",bg=bgcolor, fg=fgcolor, font="4",wrap = WORD, highlightthickness=1)
     instructions.configure(highlightbackground = fgcolor, highlightcolor= fgcolor)
     instruct1 = """                  INSTRUCTIONS
@@ -76,7 +79,6 @@ def addsite():
 5. lukup will open the webpage in a browser with the inspector in element selection mode.
 6. If the opened website matches the expected website proceed to the **Next** step.
 7. If not some manual intervention is required. """
-    #scroll.config(command=instructions.yview, activebackground=bgcolor)
     instructions.place(x=255, y=2)
     instructions.insert(tk.END, instruct1)
     label4 = Label(win3, text="URL Sample 1", bg=bgcolor, fg=fgcolor, font="6").place(x=25,y=70)
@@ -101,8 +103,6 @@ def clickanalyse():
         widget.destroy()
 
 def showthis():
-    #scroll = Scrollbar(win3)
-    #scroll.pack(side=RIGHT, fill=Y)
     exitbutton = Button(win3, text="x", command=win3.quit, bg=fgcolor, fg=bgcolor, width="2").place(x=475, y=1)
     instructions = Text(win3, width="24",bg=bgcolor, fg=fgcolor, font="4",wrap = WORD, highlightthickness=1)
     instructions.configure(highlightbackground = fgcolor, highlightcolor= fgcolor)
@@ -114,8 +114,6 @@ def showthis():
 5. lukup will open the webpage in a browser with the inspector in element selection mode.
 6. If the opened website matches the expected website proceed to the **Next** step.
 7. If not some manual intervention is required. """
-    #scroll.config(command=instructions.yview, activebackground=bgcolor)
-    #instructions.place(x=277,y=27)
     instructions.place(x=255,y=2)
     instructions.insert(tk.END, instruct1)
     label8 = Label(win3, text="Valid Query", bg=bgcolor, fg=fgcolor, font="6").place(x=10, y=70)
@@ -211,5 +209,4 @@ def ifxpath():
     text7.place(x=20,y=100)
     b7 = Button(win3, text="Test", command=test, bg=fgcolor, fg=bgcolor, font="15").place(x=150,y=335)
 
-#    profileGen.xpathGen()
 mainloop()
