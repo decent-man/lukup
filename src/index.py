@@ -3,9 +3,11 @@ from tkinter import ttk
 from clip import clipcopy
 from os import listdir
 from master import infoScraper
-import tkinter.font as font
+import tkinter.font as fnt
 import tkinter.scrolledtext as scrolledtext
 import setup as st
+import markdown
+from tkhtmlview import HTMLScrolledText
 
 #Default ENV's
 bgcolor = "#000000" #black
@@ -41,26 +43,27 @@ def openResult(_query_, _profile_):
     WinResult = wInit("600x500+300+130",bgcolor)
     thecontent = infoScraper(_profile_, _query_) 
     titlelabel = tk.Label(WinResult, text= thecontent[0], fg=bgcolor, bg=fgcolor).place(x=10,y=10)
-    information = scrolledtext.ScrolledText(WinResult, width="62",bg=bgcolor, fg=fgcolor, font="4", wrap=WORD, highlightthickness=1)
+    # information = scrolledtext.ScrolledText(WinResult, width="62",bg=bgcolor, fg=fgcolor, font="4", wrap=WORD, highlightthickness=1)
     information.configure(highlightbackground = fgcolor, highlightcolor= fgcolor)
     info = thecontent[1]   
     information.place(x=10, y=40)
     information.insert(tk.END, info)
-    exitbutton = tk.Button(WinResult, text="x", command=WinResult.quit, bg=fgcolor, fg=bgcolor, width="1").place(x=564, y=6)
+    tk.Button(WinResult, text="x", command=WinResult.quit, bg=fgcolor, fg=bgcolor, width="1").place(x=564, y=6)
 
 def instructor(_filename_):
     docDir = './docs/'
     with open(docDir + _filename_, 'r') as theDoc:
-        return theDoc.read()
+        return markdown.markdown(theDoc.read())
 
 def addsite(roots):
     roots.destroy()
     WinSetup = wInit("500x400+300+130",bgcolor)
-    exitbutton = tk.Button(WinSetup, text="x", command=WinSetup.quit, bg=fgcolor, fg=bgcolor, width="1").place(x=449, y=6)
-    instructions = scrolledtext.ScrolledText(WinSetup, width="37",bg=bgcolor, fg=fgcolor, font="1", highlightthickness=1)
-    instructions.configure(highlightbackground = fgcolor, highlightcolor= fgcolor)
+    tk.Button(WinSetup, text="x", command=WinSetup.quit, bg=fgcolor, fg=bgcolor, width="1").place(x=449, y=6)
+    instructions = HTMLScrolledText(WinSetup, width="37",bg=bgcolor, fg=fgcolor, font="1", highlightthickness=1,highlightbackground = fgcolor, highlightcolor= fgcolor, html=instructor('S_PG1.md'))
+    # instructions = scrolledtext.ScrolledText(WinSetup, width="37",bg=bgcolor, fg=fgcolor, font="1", highlightthickness=1)
+    # instructions.configure(highlightbackground = fgcolor, highlightcolor= fgcolor)
     instructions.place(x=228, y=37)
-    instructions.insert(tk.END, instructor('S_PG1.md'))
+    # instructions.insert(tk.END, instructor('S_PG1.md'))
     url1label = tk.Label(WinSetup, text="URL Sample 1", bg=bgcolor, fg=fgcolor).place(x=25,y=70)
     url1Link = tk.Entry(WinSetup, width="30", bg=bgcolor, fg=fgcolor, highlightthickness=1)
     url1Link.configure(highlightbackground = fgcolor, highlightcolor= fgcolor)
@@ -83,7 +86,7 @@ def clickAnalyse(window,u1,q1,u2,q2):
     assert (datStatic != None), "ERROR::Match_Failed :- Static URL's Mismatched"
     print(datStatic)
     cleanChildren(window)
-    exitbutton = tk.Button(window, text="x", command=window.quit, bg=fgcolor, fg=bgcolor, width="1").place(x=449, y=6)
+    tk.Button(window, text="x", command=window.quit, bg=fgcolor, fg=bgcolor, width="1").place(x=449, y=6)
     instructions = scrolledtext.ScrolledText(window, width="37",bg=bgcolor, fg=fgcolor, font="4", highlightthickness=1)
     instructions.config(highlightbackground = fgcolor, highlightcolor= fgcolor)
     instructions.place(x=228,y=37)
@@ -100,7 +103,7 @@ def clickNext(winElem,_static_,_queryStr_):
     print(urlTo)
     cleanChildren(winElem)
     myBrows = st.browserInit(urlTo,SELDRIVER,BROWSER)
-    exitbutton = tk.Button(winElem, text="x", command=lambda:[winElem.quit(),myBrows.quit()], bg=fgcolor, fg=bgcolor, width="1").place(x=449, y=6)
+    tk.Button(winElem, text="x", command=lambda:[winElem.quit(),myBrows.quit()], bg=fgcolor, fg=bgcolor, width="1").place(x=449, y=6)
     elementlabel = tk.Label(winElem, text="Element Data", bg=bgcolor, fg=fgcolor, font="10")
     elementlabel.place(x=20, y=35)
     instructions = scrolledtext.ScrolledText(winElem, width="37",bg=bgcolor, fg=fgcolor, font="4", highlightthickness=1)
@@ -211,19 +214,25 @@ def runTest(elemWin,_static_,_queries_,_tag_,_atN_,_atV_):
 def makeProfile(_static_,_queries_,_tag_,_atN_,_atV_,filename):
     st.profileGen(_static_,str("./profiles/" + filename),_tag_,_atN_,_atV_)
 
-root = wInit("250x290+500+170",bgcolor)
-addsitebtn = tk.Button(root, text ="+ Add website", command=lambda:[addsite(root)], bg=fgcolor, fg=bgcolor, height="1").place(x=120,y=253)
-exitbutton = tk.Button(root, text="x", command=root.quit, bg=bgcolor, fg=fgcolor, width="1").place(x=210, y=6)
-search_term_label = tk.Label(root, text= "Term to be searched is:", bg=bgcolor, fg=fgcolor, font="4").place(x=30,y=20)
-user_query = tk.StringVar(root, clipcopy())
-search_term_text = tk.Entry(root, width="30", fg=fgcolor, bg=bgcolor, textvariable = user_query, highlightthickness=1)
-search_term_text.configure(highlightbackground = fgcolor, highlightcolor= fgcolor)
-search_term_text.place(x=30,y=50)
-# print(listdir('./profiles'))
-profilelist = tk.Listbox(root, fg=fgcolor, bg=bgcolor, highlightthickness=1, width="30")
-profilelist.configure(highlightbackground = fgcolor, highlightcolor= fgcolor)
-profilelist.insert("end", *listdir('./profiles'))
-profilelist.bind('<<ListboxSelect>>', getElement)
-profilelist.place(x=30,y=80) 
-
-root.mainloop()
+def gmain():
+    if __name__ == "__main__":
+        root = wInit("250x290+600+180",bgcolor)
+        print(tk._default_root)
+        fntAwes = tk.font.Font(family='Font Awesome 5 Free Solid')
+        addsitebtn = tk.Button(root, text ="+ Add website", command=lambda:[addsite(root)], bg=fgcolor, fg=bgcolor, height="1").place(x=120,y=253)
+        # tk.Button(root, text="x", command=root.quit, bg=bgcolor, fg=fgcolor, width="1").place(x=210, y=6)
+        tk.Button(root, text="", font=fntAwes, command=root.quit, bg=bgcolor, fg=fgcolor, width="1").grid(row=2,column=5)
+        search_term_label = tk.Label(root, text= "Term to be searched is:", bg=bgcolor, fg=fgcolor, font="4").place(x=30,y=20)
+        user_query = tk.StringVar(root, clipcopy())
+        search_term_text = tk.Entry(root, width="30", fg=fgcolor, bg=bgcolor, textvariable = user_query, highlightthickness=1)
+        search_term_text.configure(highlightbackground = fgcolor, highlightcolor= fgcolor)
+        search_term_text.place(x=30,y=50)
+        # print(listdir('./profiles'))
+        profilelist = tk.Listbox(root, fg=fgcolor, bg=bgcolor, highlightthickness=1, width="30")
+        profilelist.configure(highlightbackground = fgcolor, highlightcolor= fgcolor)
+        profilelist.insert("end", *listdir('./profiles'))
+        profilelist.bind('<<ListboxSelect>>', getElement)
+        profilelist.place(x=30,y=80) 
+        root.mainloop()
+    else: pass
+gmain()

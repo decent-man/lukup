@@ -709,3 +709,10 @@ console.warn: SearchSettings: "get: No settings file exists, new profile?" (new 
 1621343793529	Marionette	INFO	Listening on port 40465
 1621343793639	Marionette	WARN	TLS certificate errors will be ignored for this session
 JavaScript error: resource://devtools/client/framework/toolbox.js, line 2679: Error: Can't select tool, wait for toolbox 'ready' event
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x5D0004,name=PHttpChannel::Msg_Cancel) Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x5D0009,name=PHttpChannel::Msg_DeletingChannel) Channel closing: too late to send/recv, messages will be lost
+
+1621344168771	Marionette	INFO	Stopped listening on port 40465
