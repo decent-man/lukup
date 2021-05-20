@@ -23,7 +23,7 @@ The program is very basic at the moment. So the resulting output may look messed
 
 ## Installation
 
-**<STILL_IN_DEVELOPMENT>**
+ ->STILL_IN_DEVELOPMENT: Can only be run as a script. No daemon and binaries as of now.
 
 ### Adding a website
 
@@ -37,7 +37,7 @@ A setup window should open.
 - Lukup will process the link and ask you for a proper search term appropriate according to the website(whose results will exist).
 - Lukup will open the page in a browser in **Element Selection Mode**. Now select the element box which has the information you look for.
 - There are two ways from here:
-    1. _By XPath_:
+    1. _By XPath_(Coming Soon):
         - In **Element Selection Mode**, the selected element will be highlighted in the inspector.
         - Right click the attribute and copy its xpath.
         - Paste the Xpath in lukup's setup window.
