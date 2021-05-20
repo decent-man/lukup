@@ -716,3 +716,197 @@ JavaScript error: resource://devtools/client/framework/toolbox.js, line 2679: Er
 ###!!! [Child][MessageChannel] Error: (msgtype=0x5D0009,name=PHttpChannel::Msg_DeletingChannel) Channel closing: too late to send/recv, messages will be lost
 
 1621344168771	Marionette	INFO	Stopped listening on port 40465
+1621426195090	geckodriver	INFO	Listening on 127.0.0.1:58409
+1621426196085	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileek74xS"
+1621426196626	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621426197722	Marionette	INFO	Listening on port 37749
+1621426197811	Marionette	WARN	TLS certificate errors will be ignored for this session
+1621426207326	Marionette	INFO	Stopped listening on port 37749
+1621486259821	geckodriver	INFO	Listening on 127.0.0.1:48355
+1621486260816	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilePZBQ2h"
+1621486261344	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621486262472	Marionette	INFO	Listening on port 42755
+1621486262542	Marionette	WARN	TLS certificate errors will be ignored for this session
+1621486265651	Marionette	INFO	Stopped listening on port 42755
+1621490783548	geckodriver	INFO	Listening on 127.0.0.1:50731
+1621490783551	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilemyDtn1"
+1621490783758	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621490784581	Marionette	INFO	Listening on port 37809
+1621490784669	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://devtools/client/framework/toolbox.js, line 2679: Error: Can't select tool, wait for toolbox 'ready' event
+1621490870592	geckodriver	INFO	Listening on 127.0.0.1:58581
+1621490870595	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileuTGvC4"
+1621490870803	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621490871664	Marionette	INFO	Listening on port 42489
+1621490871715	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://devtools/client/framework/toolbox.js, line 2679: Error: Can't select tool, wait for toolbox 'ready' event
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+1621490975768	Marionette	INFO	Stopped listening on port 42489
+1621491142925	geckodriver	INFO	Listening on 127.0.0.1:40959
+1621491142928	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileMEv9DM"
+1621491143134	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621491144003	Marionette	INFO	Listening on port 34217
+1621491144046	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://devtools/client/framework/toolbox.js, line 2679: Error: Can't select tool, wait for toolbox 'ready' event
+1621491170273	Marionette	INFO	Stopped listening on port 34217
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1621491254305	geckodriver	INFO	Listening on 127.0.0.1:39499
+1621491254307	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilempKsPP"
+1621491254515	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621491255366	Marionette	INFO	Listening on port 45871
+1621491255425	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://devtools/client/framework/toolbox.js, line 2679: Error: Can't select tool, wait for toolbox 'ready' event
+1621491311860	Marionette	INFO	Stopped listening on port 45871
+1621498248534	geckodriver	INFO	Listening on 127.0.0.1:55589
+1621498248536	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileSOBl52"
+1621498248742	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621498249580	Marionette	INFO	Listening on port 34883
+1621498249657	Marionette	WARN	TLS certificate errors will be ignored for this session
+1621498252738	Marionette	INFO	Stopped listening on port 34883
+1621498539569	geckodriver	INFO	Listening on 127.0.0.1:56083
+1621498539571	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilec8iHS6"
+1621498539780	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621498540604	Marionette	INFO	Listening on port 43615
+1621498540690	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://devtools/client/framework/toolbox.js, line 2679: Error: Can't select tool, wait for toolbox 'ready' event
+1621498674393	geckodriver	INFO	Listening on 127.0.0.1:43387
+1621498674396	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilemXr8r0"
+1621498674605	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621498675445	Marionette	INFO	Listening on port 32969
+1621498675514	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://devtools/client/framework/toolbox.js, line 2679: Error: Can't select tool, wait for toolbox 'ready' event
+1621498768969	geckodriver	INFO	Listening on 127.0.0.1:45671
+1621498768972	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileRItHwk"
+1621498769181	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621498770023	Marionette	INFO	Listening on port 39523
+1621498770092	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://devtools/client/framework/toolbox.js, line 2679: Error: Can't select tool, wait for toolbox 'ready' event
+1621498796132	Marionette	INFO	Stopped listening on port 39523
+1621498887154	geckodriver	INFO	Listening on 127.0.0.1:51189
+1621498887156	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileJdFOKT"
+1621498887366	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621498888214	Marionette	INFO	Listening on port 44693
+1621498888274	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://devtools/client/framework/toolbox.js, line 2679: Error: Can't select tool, wait for toolbox 'ready' event
+1621498968562	geckodriver	INFO	Listening on 127.0.0.1:53669
+1621498968564	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileV2vlsV"
+1621498968772	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621498969570	Marionette	INFO	Listening on port 33087
+1621498969586	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://devtools/client/framework/toolbox.js, line 2679: Error: Can't select tool, wait for toolbox 'ready' event
+1621499026542	Marionette	INFO	Stopped listening on port 33087
+1621499240371	geckodriver	INFO	Listening on 127.0.0.1:54107
+1621499240373	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilevSGFzc"
+1621499240580	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621499241433	Marionette	INFO	Listening on port 38551
+1621499241492	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://devtools/client/framework/toolbox.js, line 2679: Error: Can't select tool, wait for toolbox 'ready' event
+1621499263832	Marionette	INFO	Stopped listening on port 38551
+1621499393555	geckodriver	INFO	Listening on 127.0.0.1:53463
+1621499393558	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilesH3MZq"
+1621499393765	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621499394596	Marionette	INFO	Listening on port 36185
+1621499394677	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://devtools/client/framework/toolbox.js, line 2679: Error: Can't select tool, wait for toolbox 'ready' event
+1621499437801	Marionette	INFO	Stopped listening on port 36185
+1621499583612	geckodriver	INFO	Listening on 127.0.0.1:42953
+1621499583614	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileoG8oEm"
+1621499583821	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621499584707	Marionette	INFO	Listening on port 39401
+1621499584732	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://devtools/client/framework/toolbox.js, line 2679: Error: Can't select tool, wait for toolbox 'ready' event
+1621499659636	geckodriver	INFO	Listening on 127.0.0.1:38631
+1621499659639	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofiletOl3NT"
+1621499659848	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621499660648	Marionette	INFO	Listening on port 44869
+1621499660756	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://devtools/client/framework/toolbox.js, line 2679: Error: Can't select tool, wait for toolbox 'ready' event
+1621499709556	geckodriver	INFO	Listening on 127.0.0.1:33039
+1621499709559	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileF4aSEb"
+1621499709766	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621499710622	Marionette	INFO	Listening on port 36239
+1621499710680	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://devtools/client/framework/toolbox.js, line 2679: Error: Can't select tool, wait for toolbox 'ready' event
+1621499825696	Marionette	INFO	Stopped listening on port 36239
+1621500229342	geckodriver	INFO	Listening on 127.0.0.1:44091
+1621500229344	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileMP1Jt9"
+1621500229552	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621500230412	Marionette	INFO	Listening on port 36061
+1621500230462	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://devtools/client/framework/toolbox.js, line 2679: Error: Can't select tool, wait for toolbox 'ready' event
+1621500373942	geckodriver	INFO	Listening on 127.0.0.1:43709
+1621500373945	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileiLjja3"
+1621500374153	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621500375000	Marionette	INFO	Listening on port 34385
+1621500375063	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://devtools/client/framework/toolbox.js, line 2679: Error: Can't select tool, wait for toolbox 'ready' event
+1621500446550	geckodriver	INFO	Listening on 127.0.0.1:54493
+1621500446553	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileKbyRMb"
+1621500446762	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621500447593	Marionette	INFO	Listening on port 38089
+1621500447676	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://devtools/client/framework/toolbox.js, line 2679: Error: Can't select tool, wait for toolbox 'ready' event
+1621500489742	geckodriver	INFO	Listening on 127.0.0.1:44399
+1621500489745	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilehjNwfU"
+1621500489954	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621500490788	Marionette	INFO	Listening on port 40301
+1621500490864	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://devtools/client/framework/toolbox.js, line 2679: Error: Can't select tool, wait for toolbox 'ready' event
+1621500514024	Marionette	INFO	Stopped listening on port 40301
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1621500723543	geckodriver	INFO	Listening on 127.0.0.1:33613
+1621500723546	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile6zQ5Cu"
+1621500723753	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621500724593	Marionette	INFO	Listening on port 38879
+1621500724667	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://devtools/client/framework/toolbox.js, line 2679: Error: Can't select tool, wait for toolbox 'ready' event
+1621500748823	Marionette	INFO	Stopped listening on port 38879
