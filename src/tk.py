@@ -1,164 +1,191 @@
-import tkinter as tk
+#!/usr/bin/python
+# import tkinter as tk
+from tkinter import Button,Entry,Label,Tk,Listbox,StringVar,END,NORMAL,X,Y,WORD,BOTH,DISABLED
 from tkinter import ttk
-from clip import clipcopy
-from os import listdir
-from master import infoScraper
-import tkinter.font as fnt
-import tkinter.scrolledtext as scrolledtext
-import setup as st
+from os import listdir,remove
+from tkinter.font import Font
+from tkinter.scrolledtext import ScrolledText
 import markdown
 from tkhtmlview import HTMLScrolledText
 
-#Default ENV's
-bgcolor = "#000000" #black
-fgcolor = "#FFFFFF" #yellow
+from pyperclip import paste as clipFetch
+
+# Local Modules
+from master import infoScraper
+import setup as st
+
+# ENV's
+BGCOLOR = "#000000" #black
+FGCOLOR = "#FFFFFF" #yellow
 SELDRIVER = '/home/rakshit/Downloads/geckodriver'
 BROWSER = 'FI'
+ENTER='<Return>'
+SDOCS= './docs/'
 
-class wInit(tk.Tk):
-    def __init__(self,geom,colors):
-        tk.Tk.__init__(self)
+class wInit(Tk):
+    def __init__(self,geom,colors,browObj=None):
+        Tk.__init__(self)
         self.geometry(geom)
         self.resizable(width=False, height=False)
         self.configure(bg=colors)
         self.overrideredirect(False)
+        if browObj is None:
+            self.bind('<Escape>', lambda kPress:[self.quit()])
+        else:
+            self.bind('<Escape>', lambda kPress:[self.quit(),browObj.quit()])
     def kill(self):
         self.destroy()
+
+class wExit(Button):
+    def __init__(self,currentWin,winX: int,winY: int):
+        placeX = winX - 30
+        placeY = 6
+        fntAwes = Font(family='Font Awesome 5 Free Solid',size=12)
+        Button.__init__(self,currentWin, text="x", command=currentWin.quit, bg=BGCOLOR, fg=FGCOLOR, width="1",padx=5,pady=2,font=fntAwes)
+        # Button.__init__(self,currentWin, text="", command=currentWin.quit, bg=BGCOLOR, fg=FGCOLOR, width="1",padx=5,pady=2,font=fntAwes)
+        self.place(x=placeX, y=placeY)
+
+class hbxInstruct(HTMLScrolledText,markdown.Markdown):
+    def __init__(self,windoe,file,winX:int,winY:int):
+        HTMLScrolledText.__init__(self,windoe, width="37", html=hbxInstruct.hinstFetch(file))
+        placeX = winX - 272
+        placeY = winY - 363
+        self.place(x=placeX,y=placeY)
+    def hinstFetch(_filename_):
+        with open(SDOCS + _filename_, 'r') as theDoc:
+            return markdown.markdown(theDoc.read())
+
+class bxInstruct(ScrolledText):
+    def __init__(self,windoe,file,winX:int,winY:int):
+        ScrolledText.__init__(self,windoe, width="37",bg=BGCOLOR, fg=FGCOLOR, font="4", wrap=WORD, highlightthickness=1,highlightbackground = FGCOLOR, highlightcolor= FGCOLOR)
+        self.insert(END,bxInstruct.instFetch('S_PG1.md'))
+        placeX = winX - 272
+        placeY = winY - 363
+        self.place(x=placeX,y=placeY)
+    def instFetch(_filename_):
+        with open(SDOCS + _filename_, 'r') as theDoc:
+            return markdown.markdown(theDoc.read())
+
 
 def cleanChildren(_win_):
     for widget in _win_.winfo_children():
         widget.destroy()
 
+def instructor(_filename_:str):
+    print(SDOCS + _filename_)
+    with open(SDOCS + _filename_, 'r') as theDoc:
+        return markdown.markdown(theDoc.read())
 
-def getElement(event):
-  selection = event.widget.curselection()
-  index = selection[0]
-  value = event.widget.get(index)
-  profile = './profiles/' + value
-  print(profile)
-  openResult(search_term_text.get(), profile)
+def getElement(event,query,homWin):
+    profile = './profiles/' + str(event.widget.get(event.widget.curselection()[0]))
+    print(profile)
+    print(query)
+    homWin.kill()
+    openResult(query, profile)
 
 def openResult(_query_, _profile_):
-    root.destroy()
-    WinResult = wInit("600x500+300+130",bgcolor)
-    thecontent = infoScraper(_profile_, _query_) 
-    titlelabel = tk.Label(WinResult, text= thecontent[0], fg=bgcolor, bg=fgcolor).place(x=10,y=10)
-    # information = scrolledtext.ScrolledText(WinResult, width="62",bg=bgcolor, fg=fgcolor, font="4", wrap=WORD, highlightthickness=1)
-    information.configure(highlightbackground = fgcolor, highlightcolor= fgcolor)
-    info = thecontent[1]   
-    information.place(x=10, y=40)
-    information.insert(tk.END, info)
-    tk.Button(WinResult, text="x", command=WinResult.quit, bg=fgcolor, fg=bgcolor, width="1").place(x=564, y=6)
-
-def instructor(_filename_):
-    docDir = './docs/'
-    with open(docDir + _filename_, 'r') as theDoc:
-        return markdown.markdown(theDoc.read())
+    WinResult = wInit("600x345+800+230",BGCOLOR)
+    thecontent = infoScraper(_profile_, _query_)
+    Label(WinResult, text= thecontent[0], fg=BGCOLOR, bg=FGCOLOR).pack(fill=X,expand=True)
+    information = ScrolledText(WinResult,bg=BGCOLOR, fg=FGCOLOR, font="4", wrap=WORD, highlightthickness=1,highlightbackground = FGCOLOR, highlightcolor= FGCOLOR)
+    info = thecontent[1]
+    # information.place(x=10, y=40)
+    information.pack(fill=X,expand=True)
+    information.insert(END, info)
+    wExit(WinResult,600,345)
 
 def addsite(roots):
     roots.destroy()
-    WinSetup = wInit("500x400+300+130",bgcolor)
-    tk.Button(WinSetup, text="x", command=WinSetup.quit, bg=fgcolor, fg=bgcolor, width="1").place(x=449, y=6)
-    instructions = HTMLScrolledText(WinSetup, width="37",bg=bgcolor, fg=fgcolor, font="1", highlightthickness=1,highlightbackground = fgcolor, highlightcolor= fgcolor, html=instructor('S_PG1.md'))
-    # instructions = scrolledtext.ScrolledText(WinSetup, width="37",bg=bgcolor, fg=fgcolor, font="1", highlightthickness=1)
-    # instructions.configure(highlightbackground = fgcolor, highlightcolor= fgcolor)
-    instructions.place(x=228, y=37)
-    # instructions.insert(tk.END, instructor('S_PG1.md'))
-    url1label = tk.Label(WinSetup, text="URL Sample 1", bg=bgcolor, fg=fgcolor).place(x=25,y=70)
-    url1Link = tk.Entry(WinSetup, width="30", bg=bgcolor, fg=fgcolor, highlightthickness=1)
-    url1Link.configure(highlightbackground = fgcolor, highlightcolor= fgcolor)
+    WinSetup = wInit("500x400+300+130",BGCOLOR)
+    wExit(WinSetup,500,400)
+    hbxInstruct(WinSetup,"S_PG1.md",500,400)
+    Label(WinSetup, text="URL Sample 1", bg=BGCOLOR, fg=FGCOLOR).place(x=25,y=70)
+    url1Link = Entry(WinSetup, width="30", bg=BGCOLOR, fg=FGCOLOR, highlightthickness=1,highlightbackground = FGCOLOR, highlightcolor= FGCOLOR)
     url1Link.place(x=25,y=90)
-    url1Query = tk.Entry(WinSetup, width="30", bg=bgcolor, fg=fgcolor, highlightthickness=1)
-    url1Query.configure(highlightbackground = fgcolor, highlightcolor= fgcolor)
+    url1Query = Entry(WinSetup, width="30", bg=BGCOLOR, fg=FGCOLOR, highlightthickness=1,highlightbackground = FGCOLOR, highlightcolor= FGCOLOR)
     url1Query.place(x=25,y=120)
-    url2label = tk.Label(WinSetup, text="URL Sample 2", bg=bgcolor, fg=fgcolor).place(x=25,y=160)
-    url2Link = tk.Entry(WinSetup, width="30",  bg=bgcolor, fg=fgcolor, highlightthickness=1)
-    url2Link.configure(highlightbackground = fgcolor, highlightcolor= fgcolor)
+    Label(WinSetup, text="URL Sample 2", bg=BGCOLOR, fg=FGCOLOR).place(x=25,y=160)
+    url2Link = Entry(WinSetup, width="30",  bg=BGCOLOR, fg=FGCOLOR, highlightthickness=1,highlightbackground = FGCOLOR, highlightcolor= FGCOLOR)
     url2Link.place(x=25,y=180)
-    url2Query = tk.Entry(WinSetup, width="30",  bg=bgcolor, fg=fgcolor, highlightthickness=1)
-    url2Query.configure(highlightbackground = fgcolor, highlightcolor= fgcolor)
+    url2Query = Entry(WinSetup, width="30",  bg=BGCOLOR, fg=FGCOLOR, highlightthickness=1,highlightbackground = FGCOLOR, highlightcolor= FGCOLOR)
     url2Query.place(x=25,y=210)
-    linkanalyse = tk.Label(WinSetup,text="LINK ANALYZER",bg=bgcolor, fg=fgcolor, font="15").place(x=10,y=30)
-    analyzbtn = tk.Button(WinSetup, text="Analyse", command = lambda:[clickAnalyse(WinSetup,url1Link.get(),url1Query.get(),url2Link.get(),url2Query.get())],bg=fgcolor, fg=bgcolor).place(x=125,y=363)
+    Label(WinSetup,text="LINK ANALYZER",bg=BGCOLOR, fg=FGCOLOR, font="15").place(x=10,y=30)
+    Button(WinSetup, text="Analyse", command = lambda:[clickAnalyse(WinSetup,url1Link.get(),url1Query.get(),url2Link.get(),url2Query.get())],bg=FGCOLOR, fg=BGCOLOR).place(x=125,y=363)
 
 def clickAnalyse(window,u1,q1,u2,q2):
     datStatic = st.linkAnalyzer(u1,q1,u2,q2)
     assert (datStatic != None), "ERROR::Match_Failed :- Static URL's Mismatched"
     print(datStatic)
     cleanChildren(window)
-    tk.Button(window, text="x", command=window.quit, bg=fgcolor, fg=bgcolor, width="1").place(x=449, y=6)
-    instructions = scrolledtext.ScrolledText(window, width="37",bg=bgcolor, fg=fgcolor, font="4", highlightthickness=1)
-    instructions.config(highlightbackground = fgcolor, highlightcolor= fgcolor)
-    instructions.place(x=228,y=37)
-    instructions.insert(tk.END, instructor('S_PG1.md'))
-    validentrylabel = tk.Label(window, text="Valid Query", bg=bgcolor, fg=fgcolor).place(x=10, y=70)
-    validentrytext = tk.Entry(window, width="30", bg=bgcolor, fg=fgcolor, highlightthickness=1)
-    validentrytext.configure(highlightbackground = fgcolor, highlightcolor= fgcolor)
-    validentrytext.place(x=10,y=90)
-    nxtbtn = tk.Button(window, text="Next",command=lambda:[clickNext(window,datStatic,validentrytext.get())], bg=fgcolor, fg=bgcolor).place(x=130,y=360)
-    linkanalyse = tk.Label(window,text="Link Analyzer",bg=bgcolor, fg=fgcolor, font="15").place(x=20,y=30)
+    wExit(window,500,400)
+    hbxInstruct(window,"S_PG1.md",500,400)
+    Label(window, text="Valid Query", bg=BGCOLOR, fg=FGCOLOR).place(x=10, y=70)
+    valQuery = Entry(window, width="30", bg=BGCOLOR, fg=FGCOLOR, highlightthickness=1,highlightbackground = FGCOLOR, highlightcolor= FGCOLOR)
+    valQuery.place(x=10,y=90)
+    valQuery.bind(ENTER,lambda kPress:[clickNext(window,datStatic,valQuery.get())])
+    nxtbtn = Button(window, text="Next",command=lambda:[clickNext(window,datStatic,valQuery.get())], bg=FGCOLOR, fg=BGCOLOR).place(x=130,y=360)
+    linkanalyse = Label(window,text="Link Analyzer",bg=BGCOLOR, fg=FGCOLOR, font="15").place(x=20,y=30)
+
 
 def clickNext(winElem,_static_,_queryStr_):
     urlTo = st.genURL(_static_,_queryStr_)
     print(urlTo)
     cleanChildren(winElem)
     myBrows = st.browserInit(urlTo,SELDRIVER,BROWSER)
-    tk.Button(winElem, text="x", command=lambda:[winElem.quit(),myBrows.quit()], bg=fgcolor, fg=bgcolor, width="1").place(x=449, y=6)
-    elementlabel = tk.Label(winElem, text="Element Data", bg=bgcolor, fg=fgcolor, font="10")
+    wExit(winElem,500,400)
+    elementlabel = Label(winElem, text="Element Data", bg=BGCOLOR, fg=FGCOLOR, font="10")
     elementlabel.place(x=20, y=35)
-    instructions = scrolledtext.ScrolledText(winElem, width="37",bg=bgcolor, fg=fgcolor, font="4", highlightthickness=1)
-    instructions.config(highlightbackground = fgcolor, highlightcolor= fgcolor)
-    instructions.place(x=228,y=37)
-    instructions.insert(tk.END, instructor('S_PG2.md'))
-    tk.Label(winElem, text="Tag Name",bg=bgcolor, fg=fgcolor, font="6").place(x=20,y=110)
-    tgN = tk.Entry(winElem, width="30",bg = bgcolor, fg=fgcolor, highlightthickness=1,highlightbackground = fgcolor, highlightcolor= fgcolor)
+    hbxInstruct(winElem,"S_PG2.md",500,400)
+    Label(winElem, text="Tag Name",bg=BGCOLOR, fg=FGCOLOR, font="6").place(x=20,y=110)
+    tgN = Entry(winElem, width="30",bg = BGCOLOR, fg=FGCOLOR, highlightthickness=1,highlightbackground = FGCOLOR, highlightcolor= FGCOLOR)
     tgN.place(x=20,y=130)
-    tk.Label(winElem, text="Attribute Name",bg=bgcolor, fg=fgcolor, font="6").place(x=20,y=170)
-    atN = tk.Entry(winElem, width="30",bg=bgcolor, fg=fgcolor, highlightthickness=1,highlightbackground = fgcolor, highlightcolor= fgcolor)
+    Label(winElem, text="Attribute Name",bg=BGCOLOR, fg=FGCOLOR, font="6").place(x=20,y=170)
+    atN = Entry(winElem, width="30",bg=BGCOLOR, fg=FGCOLOR, highlightthickness=1,highlightbackground = FGCOLOR, highlightcolor= FGCOLOR)
     atN.place(x=20,y=190)
-    tk.Label(winElem, text="Attribute Value",bg=bgcolor, fg=fgcolor, font="6").place(x=20,y=230)
-    atV = tk.Entry(winElem, width="30",bg=bgcolor, fg=fgcolor, highlightthickness=1,highlightbackground = fgcolor, highlightcolor= fgcolor)
+    Label(winElem, text="Attribute Value",bg=BGCOLOR, fg=FGCOLOR, font="6").place(x=20,y=230)
+    atV = Entry(winElem, width="30",bg=BGCOLOR, fg=FGCOLOR, highlightthickness=1,highlightbackground = FGCOLOR, highlightcolor= FGCOLOR)
     atV.place(x=20,y=250)
-    testbtn = tk.Button(winElem, text="Test", command=lambda:[runTest(winElem,_static_,_queryStr_,tgN.get(),atN.get(),atV.get(),)], bg=fgcolor, fg=bgcolor, font="10",state=tk.NORMAL)
+    atV.bind(ENTER,lambda kPress:[runTest(winElem,_static_,_queryStr_,tgN.get(),atN.get(),atV.get(),myBrows)])
+    testbtn = Button(winElem, text="Test", command=lambda:[runTest(winElem,_static_,_queryStr_,tgN.get(),atN.get(),atV.get(),myBrows)], bg=FGCOLOR, fg=BGCOLOR, font="10",state=NORMAL)
     testbtn.place(x=150,y=335)
-    # cbox = ttk.Combobox(winElem, values=["XPATH", "CUSTOM"], state="readonly")
+    # cbox = tCombobox(winElem, values=["XPATH", "CUSTOM"], state="readonly")
     # cbox.place(x=20, y=60)    
     # cbox.bind("<<ComboboxSelected>>",callbackFunc)
     
 # def callbackFunc(event):
     # windObj = event.widget.master
     # #manual widgets
-    # cFrame = ttk.Frame(windObj,height=20,width=15,padding=(50,50,50,50))
+    # cFrame = tFrame(windObj,height=20,width=15,padding=(50,50,50,50))
     # cFrame.grid(row=2,column=6)
-    # # tagnamelabel = tk.Label(cFrame, text="Tag Name",bg=bgcolor, fg=fgcolor, font="6").
-    # # tagnametext = tk.Entry(cFrame, width="30",bg = bgcolor, fg=fgcolor, highlightthickness=1,highlightbackground = fgcolor, highlightcolor= fgcolor)
-    # # # tagnametext.configure(highlightbackground = fgcolor, highlightcolor= fgcolor)
-    # tk.Label(cFrame, text="Tag Name",bg=bgcolor, fg=fgcolor, font="6").place(x=20,y=110)
-    # tk.Entry(cFrame, width="30",bg = bgcolor, fg=fgcolor, highlightthickness=1,highlightbackground = fgcolor, highlightcolor= fgcolor).place(x=20,y=120)
+    # # tagnamelabel = Label(cFrame, text="Tag Name",bg=BGCOLOR, fg=FGCOLOR, font="6").
+    # # tagnametext = Entry(cFrame, width="30",bg = BGCOLOR, fg=FGCOLOR, highlightthickness=1,highlightbackground = FGCOLOR, highlightcolor= FGCOLOR)
+    # # # tagnametext.configure(highlightbackground = FGCOLOR, highlightcolor= FGCOLOR)
+    # Label(cFrame, text="Tag Name",bg=BGCOLOR, fg=FGCOLOR, font="6").place(x=20,y=110)
+    # Entry(cFrame, width="30",bg = BGCOLOR, fg=FGCOLOR, highlightthickness=1,highlightbackground = FGCOLOR, highlightcolor= FGCOLOR).place(x=20,y=120)
 
-    # # attributenamelabel = tk.Label(cFrame, text="Attribute Name",bg=bgcolor, fg=fgcolor, font="6")
-    # # attributenametext = tk.Entry(cFrame, width="30",bg=bgcolor, fg=fgcolor, highlightthickness=1,highlightbackground = fgcolor, highlightcolor= fgcolor)
-    # # attributenametext.configure(highlightbackground = fgcolor, highlightcolor= fgcolor)
-    # tk.Label(cFrame, text="Attribute Name",bg=bgcolor, fg=fgcolor, font="6").place(x=20,y=130)
-    # tk.Entry(cFrame, width="30",bg=bgcolor, fg=fgcolor, highlightthickness=1,highlightbackground = fgcolor, highlightcolor= fgcolor).place(x=20,y=140)
+    # # attributenamelabel = Label(cFrame, text="Attribute Name",bg=BGCOLOR, fg=FGCOLOR, font="6")
+    # # attributenametext = Entry(cFrame, width="30",bg=BGCOLOR, fg=FGCOLOR, highlightthickness=1,highlightbackground = FGCOLOR, highlightcolor= FGCOLOR)
+    # # attributenametext.configure(highlightbackground = FGCOLOR, highlightcolor= FGCOLOR)
+    # Label(cFrame, text="Attribute Name",bg=BGCOLOR, fg=FGCOLOR, font="6").place(x=20,y=130)
+    # Entry(cFrame, width="30",bg=BGCOLOR, fg=FGCOLOR, highlightthickness=1,highlightbackground = FGCOLOR, highlightcolor= FGCOLOR).place(x=20,y=140)
    
-    # # attribute_val_label = tk.Label(cFrame, text="Attribute Value",bg=bgcolor, fg=fgcolor, font="6")
-    # # attribute_val_text = tk.Entry(cFrame, width="30", bg=bgcolor, fg=fgcolor, highlightthickness=1,highlightbackground = fgcolor, highlightcolor= fgcolor)
-    # # attribute_val_text.configure(highlightbackground = fgcolor, highlightcolor= fgcolor)
-    # tk.Label(cFrame, text="Attribute Value",bg=bgcolor, fg=fgcolor, font="6").place(x=20,y=150)
-    # tk.Entry(cFrame, width="30", bg=bgcolor, fg=fgcolor, highlightthickness=1,highlightbackground = fgcolor, highlightcolor= fgcolor).place(x=20,y=160)
+    # # attribute_val_label = Label(cFrame, text="Attribute Value",bg=BGCOLOR, fg=FGCOLOR, font="6")
+    # # attribute_val_text = Entry(cFrame, width="30", bg=BGCOLOR, fg=FGCOLOR, highlightthickness=1,highlightbackground = FGCOLOR, highlightcolor= FGCOLOR)
+    # # attribute_val_text.configure(highlightbackground = FGCOLOR, highlightcolor= FGCOLOR)
+    # Label(cFrame, text="Attribute Value",bg=BGCOLOR, fg=FGCOLOR, font="6").place(x=20,y=150)
+    # Entry(cFrame, width="30", bg=BGCOLOR, fg=FGCOLOR, highlightthickness=1,highlightbackground = FGCOLOR, highlightcolor= FGCOLOR).place(x=20,y=160)
   
     # #xpath widget
-    # # xFrame = ttk.Frame(windObj,x=100,y=25,bg="#FFFF00")
-    # xFrame = ttk.Frame(windObj,height=20,width=15,padding=(50,50,50,50))
+    # # xFrame = tFrame(windObj,x=100,y=25,bg="#FFFF00")
+    # xFrame = tFrame(windObj,height=20,width=15,padding=(50,50,50,50))
     # xFrame.grid(row=2,column=6)
-    # # xpathlabel = tk.Label(xFrame, text="Xpath",bg=bgcolor, fg=fgcolor, font="6")
-    # # xpathtext = tk.Entry(xFrame, width="30", bg=bgcolor, fg=fgcolor, highlightthickness=1,highlightbackground = fgcolor, highlightcolor= fgcolor)
-    # # xpathtext.configure(highlightbackground = fgcolor, highlightcolor= fgcolor)
-    # tk.Label(xFrame, text="Xpath",bg=bgcolor, fg=fgcolor, font="6").place(x=20,y=110)
-    # tk.Entry(xFrame, width="30", bg=bgcolor, fg=fgcolor, highlightthickness=1,highlightbackground = fgcolor, highlightcolor= fgcolor).place(x=20,y=120)
+    # # xpathlabel = Label(xFrame, text="Xpath",bg=BGCOLOR, fg=FGCOLOR, font="6")
+    # # xpathtext = Entry(xFrame, width="30", bg=BGCOLOR, fg=FGCOLOR, highlightthickness=1,highlightbackground = FGCOLOR, highlightcolor= FGCOLOR)
+    # # xpathtext.configure(highlightbackground = FGCOLOR, highlightcolor= FGCOLOR)
+    # Label(xFrame, text="Xpath",bg=BGCOLOR, fg=FGCOLOR, font="6").place(x=20,y=110)
+    # Entry(xFrame, width="30", bg=BGCOLOR, fg=FGCOLOR, highlightthickness=1,highlightbackground = FGCOLOR, highlightcolor= FGCOLOR).place(x=20,y=120)
   
-    # testbtn = tk.Button(windObj, text="Test", command=runTest, bg=fgcolor, fg=bgcolor, font="10",state=tk.DISABLED)
+    # testbtn = Button(windObj, text="Test", command=runTest, bg=FGCOLOR, fg=BGCOLOR, font="10",state=DISABLED)
     # testbtn.place(x=150,y=335)
     
     # selection = event.widget.get()
@@ -173,7 +200,7 @@ def clickNext(winElem,_static_,_queryStr_):
         # # attributenametext.place(x=20,y=190)
         # # attribute_val_label.place(x=20,y=230)
         # # attribute_val_text.place(x=20,y=250)
-        # # testbtn.config(state=tk.NORMAL)
+        # # testbtn.config(state=NORMAL)
         # # cFrame.pack()
         # xFrame.place(x=70,y=15)
   
@@ -189,50 +216,49 @@ def clickNext(winElem,_static_,_queryStr_):
         # # attributenametext.destroy()
         # # attribute_val_label.destroy()
         # # attribute_val_text.destroy()
-        # # testbtn.config(state=tk.NORMAL)
+        # # testbtn.config(state=NORMAL)
         # # xFrame.place(x=50,y=15)
         # xFrame.place(x=50,y=15)
 
     # else: print("\n=\n")    
   
-    # # selection = ttk.Combobox(windObj, width = 30)
+    # # selection = tCombobox(windObj, width = 30)
 
-def runTest(elemWin,_static_,_queries_,_tag_,_atN_,_atV_):
-    tesWin = wInit("600x500+300+130",bgcolor)
-    st.profileGen(_static_,"test",_tag_,_atN_,_atV_)
-    infoTuple = infoScraper("test",_queries_)
-    goBack = tk.Button(tesWin, text =" < ", command=tesWin.quit, bg=fgcolor, fg=bgcolor, height="1")
-    goBack.place(x=20,y=25)
-    siteNames = tk.Entry(tesWin, width="30",bg=bgcolor, fg=fgcolor, highlightthickness=1,highlightbackground = fgcolor, highlightcolor= fgcolor)
-    siteNames.place(x=25,y=455)
-    contentBox = scrolledtext.ScrolledText(tesWin, width="69",bg=bgcolor, fg=fgcolor, font="4", highlightthickness=1,highlightbackground = fgcolor, highlightcolor= fgcolor)
-    contentBox.place(x=10,y=40)
-    contentBox.insert(tk.END,infoTuple[1])
-    cnfSave = tk.Button(tesWin, text ="Confirm & Save", command=lambda:[makeProfile(_static_,_queries_,_tag_,_atN_,_atV_,siteNames.get()),tesWin.quit()], bg=fgcolor, fg=bgcolor, height="1")
-    cnfSave.place(x=390,y=455)
+
+def runTest(elemWin,_static_,_queries_,_tag_,_atN_,_atV_,brows):
+    tesWin = wInit("600x380+300+130",BGCOLOR,brows)
+    st.profileGen(_static_,"t35t",_tag_,_atN_,_atV_)
+    infoTuple = infoScraper("t35t",_queries_)
+    contentBox = ScrolledText(tesWin, width=40 , height=20 , bg=BGCOLOR, fg=FGCOLOR, font="4", highlightthickness=1,highlightbackground = FGCOLOR, highlightcolor= FGCOLOR)
+    # contentBox.place(x=10,y=40)
+    contentBox.pack(fill=X,expand=True)
+    contentBox.insert(END,infoTuple[1])
+    Button(tesWin, text =" <- ", command=tesWin.destroy, bg=FGCOLOR, fg=BGCOLOR, height="1",padx=4,pady=2).place(x=10,y=15)
+    Label(tesWin,text="Save Configuration as:", fg=FGCOLOR,bg=BGCOLOR,font="6").place(x=25,y=335)
+    siteNames = Entry(tesWin, width="50", bg=BGCOLOR, fg=FGCOLOR, highlightthickness=1, highlightbackground=FGCOLOR, highlightcolor=FGCOLOR)
+    siteNames.place(x=25,y=345)
+    cnfSave = Button(tesWin, text ="Confirm & Save", command=lambda:[makeProfile(_static_,_queries_,_tag_,_atN_,_atV_,siteNames.get()),tesWin.quit(),elemWin.quit(),home(),brows.quit()], bg=FGCOLOR, fg=BGCOLOR, height="1")
+    cnfSave.place(x=460,y=340)
 
 def makeProfile(_static_,_queries_,_tag_,_atN_,_atV_,filename):
     st.profileGen(_static_,str("./profiles/" + filename),_tag_,_atN_,_atV_)
+    remove("t35t")
 
-def gmain():
-    if __name__ == "__main__":
-        root = wInit("250x290+600+180",bgcolor)
-        print(tk._default_root)
-        fntAwes = tk.font.Font(family='Font Awesome 5 Free Solid')
-        addsitebtn = tk.Button(root, text ="+ Add website", command=lambda:[addsite(root)], bg=fgcolor, fg=bgcolor, height="1").place(x=120,y=253)
-        # tk.Button(root, text="x", command=root.quit, bg=bgcolor, fg=fgcolor, width="1").place(x=210, y=6)
-        tk.Button(root, text="", font=fntAwes, command=root.quit, bg=bgcolor, fg=fgcolor, width="1").grid(row=2,column=5)
-        search_term_label = tk.Label(root, text= "Term to be searched is:", bg=bgcolor, fg=fgcolor, font="4").place(x=30,y=20)
-        user_query = tk.StringVar(root, clipcopy())
-        search_term_text = tk.Entry(root, width="30", fg=fgcolor, bg=bgcolor, textvariable = user_query, highlightthickness=1)
-        search_term_text.configure(highlightbackground = fgcolor, highlightcolor= fgcolor)
-        search_term_text.place(x=30,y=50)
-        # print(listdir('./profiles'))
-        profilelist = tk.Listbox(root, fg=fgcolor, bg=bgcolor, highlightthickness=1, width="30")
-        profilelist.configure(highlightbackground = fgcolor, highlightcolor= fgcolor)
-        profilelist.insert("end", *listdir('./profiles'))
-        profilelist.bind('<<ListboxSelect>>', getElement)
-        profilelist.place(x=30,y=80) 
-        root.mainloop()
-    else: pass
-gmain()
+def home():
+    root = wInit("250x290+600+180",BGCOLOR)
+    addsitebtn = Button(root, text ="+ Add website", command=lambda:[addsite(root)], bg=FGCOLOR, fg=BGCOLOR, height="1").place(x=120,y=253)
+    # Button(root, text="", command=root.quit, font=fntAwes ,bg=BGCOLOR, fg=FGCOLOR, width="1", padx=5,pady=2).place(x=220, y=6)
+    wExit(root,250,290)
+    Label(root, text= "Term to be searched is:", bg=BGCOLOR, fg=FGCOLOR, font="4").place(x=30,y=20)
+    uQuery = StringVar()
+    qBox = Entry(root, width="30", fg=FGCOLOR, bg=BGCOLOR, textvariable = uQuery, highlightthickness=1,highlightbackground = FGCOLOR, highlightcolor= FGCOLOR)
+    qBox.insert(END,clipFetch())
+    qBox.place(x=30,y=50)
+    profilelist = Listbox(root, fg=FGCOLOR, bg=BGCOLOR, highlightthickness=1, width="30",highlightbackground = FGCOLOR, highlightcolor= FGCOLOR)
+    profilelist.insert("end", *listdir('./profiles'))
+    profilelist.bind('<<ListboxSelect>>', lambda ev,sQry=uQuery.get(),homeWind=root:[getElement(ev,sQry,homeWind)])
+    profilelist.place(x=30,y=80)
+    root.mainloop()
+# open('./docs/page1.html','w').write(instructor('S_PG1.md'))
+home()
+# runTest("https://en.wikipedia.org/w/index.php?search=","Microsoft","div","id","mw-content-text")
