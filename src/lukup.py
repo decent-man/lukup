@@ -180,3 +180,8 @@ def home():
     profilelist.bind('<<ListboxSelect>>', lambda ev,sQry=uQuery,homeWind=root:[getElement(ev,sQry,homeWind)])
     profilelist.place(x=30,y=80)
     root.mainloop()
+
+if __name__ == "__main__":
+    home()
+else:
+    pass
