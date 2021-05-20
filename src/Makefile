@@ -20,7 +20,7 @@ M_ARG2="AMDGPU PRO"
 CLIP_FILE=clip.py
 
 # index.py
-GUI_FILE=tk.py
+GUI_FILE=lukup.py
 
 setup: $(S_FILE)
 	$(INTERP) $(S_FILE) $(S_ARG1) $(S_ARG2) $(S_ARG3) $(S_ARG4) $(S_ARG5)
