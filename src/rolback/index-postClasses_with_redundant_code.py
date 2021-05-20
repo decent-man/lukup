@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # import tkinter as tk
-from tkinter import Button,Entry,Label,Tk,Listbox,StringVar,END,NORMAL,X,Y,WORD,BOTH,DISABLED
-from tkinter import ttk
+from tkinter import Button,Entry,Frame,Label,Tk,Listbox,StringVar,END,NORMAL,X,Y,WORD,BOTH,DISABLED
+from tkinter.ttk import Combobox
 from os import listdir,remove
 from tkinter.font import Font
 from tkinter.scrolledtext import ScrolledText
@@ -80,8 +80,9 @@ def getElement(event,query,homWin):
     profile = './profiles/' + str(event.widget.get(event.widget.curselection()[0]))
     print(profile)
     print(query)
+    cleanChildren(homWin)
     homWin.kill()
-    openResult(query, profile)
+    openResult(query.get(), profile)
 
 def openResult(_query_, _profile_):
     WinResult = wInit("600x345+800+230",BGCOLOR)
@@ -118,13 +119,13 @@ def clickAnalyse(window,u1,q1,u2,q2):
     print(datStatic)
     cleanChildren(window)
     wExit(window,500,400)
+    Label(window,text="Link Analyzer",bg=BGCOLOR, fg=FGCOLOR, font="15").place(x=20,y=30)
     hbxInstruct(window,"S_PG1.md",500,400)
     Label(window, text="Valid Query", bg=BGCOLOR, fg=FGCOLOR).place(x=10, y=70)
     valQuery = Entry(window, width="30", bg=BGCOLOR, fg=FGCOLOR, highlightthickness=1,highlightbackground = FGCOLOR, highlightcolor= FGCOLOR)
     valQuery.place(x=10,y=90)
     valQuery.bind(ENTER,lambda kPress:[clickNext(window,datStatic,valQuery.get())])
-    nxtbtn = Button(window, text="Next",command=lambda:[clickNext(window,datStatic,valQuery.get())], bg=FGCOLOR, fg=BGCOLOR).place(x=130,y=360)
-    linkanalyse = Label(window,text="Link Analyzer",bg=BGCOLOR, fg=FGCOLOR, font="15").place(x=20,y=30)
+    Button(window, text="Next",command=lambda:[clickNext(window,datStatic,valQuery.get())], bg=FGCOLOR, fg=BGCOLOR).place(x=130,y=360)
 
 
 def clickNext(winElem,_static_,_queryStr_):
@@ -136,22 +137,67 @@ def clickNext(winElem,_static_,_queryStr_):
     elementlabel = Label(winElem, text="Element Data", bg=BGCOLOR, fg=FGCOLOR, font="10")
     elementlabel.place(x=20, y=35)
     hbxInstruct(winElem,"S_PG2.md",500,400)
-    Label(winElem, text="Tag Name",bg=BGCOLOR, fg=FGCOLOR, font="6").place(x=20,y=110)
+    tgNL = Label(winElem, text="Tag Name",bg=BGCOLOR, fg=FGCOLOR, font="6").place(x=20,y=110)
     tgN = Entry(winElem, width="30",bg = BGCOLOR, fg=FGCOLOR, highlightthickness=1,highlightbackground = FGCOLOR, highlightcolor= FGCOLOR)
     tgN.place(x=20,y=130)
-    Label(winElem, text="Attribute Name",bg=BGCOLOR, fg=FGCOLOR, font="6").place(x=20,y=170)
+    atNL = Label(winElem, text="Attribute Name",bg=BGCOLOR, fg=FGCOLOR, font="6").place(x=20,y=170)
     atN = Entry(winElem, width="30",bg=BGCOLOR, fg=FGCOLOR, highlightthickness=1,highlightbackground = FGCOLOR, highlightcolor= FGCOLOR)
     atN.place(x=20,y=190)
-    Label(winElem, text="Attribute Value",bg=BGCOLOR, fg=FGCOLOR, font="6").place(x=20,y=230)
+    atvL = Label(winElem, text="Attribute Value",bg=BGCOLOR, fg=FGCOLOR, font="6").place(x=20,y=230)
     atV = Entry(winElem, width="30",bg=BGCOLOR, fg=FGCOLOR, highlightthickness=1,highlightbackground = FGCOLOR, highlightcolor= FGCOLOR)
     atV.place(x=20,y=250)
     atV.bind(ENTER,lambda kPress:[runTest(winElem,_static_,_queryStr_,tgN.get(),atN.get(),atV.get(),myBrows)])
     testbtn = Button(winElem, text="Test", command=lambda:[runTest(winElem,_static_,_queryStr_,tgN.get(),atN.get(),atV.get(),myBrows)], bg=FGCOLOR, fg=BGCOLOR, font="10",state=NORMAL)
     testbtn.place(x=150,y=335)
-    # cbox = tCombobox(winElem, values=["XPATH", "CUSTOM"], state="readonly")
-    # cbox.place(x=20, y=60)    
-    # cbox.bind("<<ComboboxSelected>>",callbackFunc)
+    # cFrame = Frame(winElem,bg=BGCOLOR)
+    # tgNL = Label(cFrame, text="Tag Name",bg=BGCOLOR, fg=FGCOLOR, font="6").place(x=20,y=110)
+    # tgN = Entry(cFrame, width="30",bg = BGCOLOR, fg=FGCOLOR, highlightthickness=1,highlightbackground = FGCOLOR, highlightcolor= FGCOLOR)
+    # tgN.place(x=20,y=130)
+    # atNL = Label(cFrame, text="Attribute Name",bg=BGCOLOR, fg=FGCOLOR, font="6").place(x=20,y=170)
+    # atN = Entry(cFrame, width="30",bg=BGCOLOR, fg=FGCOLOR, highlightthickness=1,highlightbackground = FGCOLOR, highlightcolor= FGCOLOR)
+    # atN.place(x=20,y=190)
+    # atvL = Label(cFrame, text="Attribute Value",bg=BGCOLOR, fg=FGCOLOR, font="6").place(x=20,y=230)
+    # atV = Entry(cFrame, width="30",bg=BGCOLOR, fg=FGCOLOR, highlightthickness=1,highlightbackground = FGCOLOR, highlightcolor= FGCOLOR)
+    # atV.place(x=20,y=250)
+    # atV.bind(ENTER,lambda kPress:[runTest(winElem,_static_,_queryStr_,tgN.get(),atN.get(),atV.get(),myBrows)])
+    # xFrame = Frame(winElem,bg=BGCOLOR)
+    # Label(xFrame, text="Xpath", bg=BGCOLOR,fg=FGCOLOR,font="6").place(x=20,y=110)
+    # xpth = Entry(xFrame, width=30, bg=BGCOLOR,fg=FGCOLOR, highlightthickness=1, highlightbackground=FGCOLOR, highlightcolor=FGCOLOR)
+    # xpth.place(x=20,y=130)
+    # testBtn = Button(winElem, text="Test", command=lambda:[runTest(winElem,_static_,_queryStr_,tgN.get(),atN.get(),atV.get(),myBrows)], bg=FGCOLOR, fg=BGCOLOR, font="10",state=NORMAL)
+    # testBtn.place(x=150,y=335)
+    # methSelect = Combobox(winElem, values=["XPATH", "CUSTOM"], state="readonly")
+    # methSelect.place(x=20, y=60)
+    # methSelect.bind("<<ComboboxSelected>>",lambda ev,windo=winElem,cF=cFrame,xF=xFrame,test=testBtn:[callbackFunc(ev,windo,cF,xF,test)])
     
+# def callbackFunc(event,elemWindo,cF,xF,tbt):
+    # print(event.widget.get())
+    # tbt.place(x=150,y=335)
+    # if str(event.widget.get()) == 'XPATH':
+        # print("chuchu")
+        # if cF.winfo_ismapped() == True:
+            # cF.forget()
+            # print("I removed cF")
+            # # for subwidgets in cF.winfo_children():
+                # # subwidgets.forget()
+        # else:
+            # pass
+        # print(xF.winfo_children())
+        # xF.pack(fill=X,expand=True)
+    # elif str(event.widget.get()) == 'CUSTOM':
+        # print("Nunu")
+        # if xF.winfo_ismapped() == True:
+            # xF.forget()
+            # print("I removed xF")
+            # # for subwidgets in xF.winfo_children():
+                # # subwidgets.forget()
+        # else:
+            # pass
+        # print(cF.winfo_children())
+        # cF.pack(fill=X,expand=True)
+    # else:
+        # pass
+
 # def callbackFunc(event):
     # windObj = event.widget.master
     # #manual widgets
@@ -224,7 +270,6 @@ def clickNext(winElem,_static_,_queryStr_):
   
     # # selection = tCombobox(windObj, width = 30)
 
-
 def runTest(elemWin,_static_,_queries_,_tag_,_atN_,_atV_,brows):
     tesWin = wInit("600x380+300+130",BGCOLOR,brows)
     st.profileGen(_static_,"t35t",_tag_,_atN_,_atV_)
@@ -234,7 +279,7 @@ def runTest(elemWin,_static_,_queries_,_tag_,_atN_,_atV_,brows):
     contentBox.pack(fill=X,expand=True)
     contentBox.insert(END,infoTuple[1])
     Button(tesWin, text =" <- ", command=tesWin.destroy, bg=FGCOLOR, fg=BGCOLOR, height="1",padx=4,pady=2).place(x=10,y=15)
-    Label(tesWin,text="Save Configuration as:", fg=FGCOLOR,bg=BGCOLOR,font="6").place(x=25,y=335)
+    Label(tesWin,text="Save Configuration as:", fg=FGCOLOR,bg=BGCOLOR,font="6").place(x=25,y=320)
     siteNames = Entry(tesWin, width="50", bg=BGCOLOR, fg=FGCOLOR, highlightthickness=1, highlightbackground=FGCOLOR, highlightcolor=FGCOLOR)
     siteNames.place(x=25,y=345)
     cnfSave = Button(tesWin, text ="Confirm & Save", command=lambda:[makeProfile(_static_,_queries_,_tag_,_atN_,_atV_,siteNames.get()),tesWin.quit(),elemWin.quit(),home(),brows.quit()], bg=FGCOLOR, fg=BGCOLOR, height="1")
@@ -247,18 +292,17 @@ def makeProfile(_static_,_queries_,_tag_,_atN_,_atV_,filename):
 def home():
     root = wInit("250x290+600+180",BGCOLOR)
     addsitebtn = Button(root, text ="+ Add website", command=lambda:[addsite(root)], bg=FGCOLOR, fg=BGCOLOR, height="1").place(x=120,y=253)
-    # Button(root, text="", command=root.quit, font=fntAwes ,bg=BGCOLOR, fg=FGCOLOR, width="1", padx=5,pady=2).place(x=220, y=6)
     wExit(root,250,290)
     Label(root, text= "Term to be searched is:", bg=BGCOLOR, fg=FGCOLOR, font="4").place(x=30,y=20)
     uQuery = StringVar()
-    qBox = Entry(root, width="30", fg=FGCOLOR, bg=BGCOLOR, textvariable = uQuery, highlightthickness=1,highlightbackground = FGCOLOR, highlightcolor= FGCOLOR)
-    qBox.insert(END,clipFetch())
+    uQuery.set(clipFetch())
+    qBox = Entry(root, width="30", textvariable=uQuery, fg=FGCOLOR, bg=BGCOLOR, highlightthickness=1, highlightbackground=FGCOLOR, highlightcolor=FGCOLOR)
     qBox.place(x=30,y=50)
     profilelist = Listbox(root, fg=FGCOLOR, bg=BGCOLOR, highlightthickness=1, width="30",highlightbackground = FGCOLOR, highlightcolor= FGCOLOR)
     profilelist.insert("end", *listdir('./profiles'))
-    profilelist.bind('<<ListboxSelect>>', lambda ev,sQry=uQuery.get(),homeWind=root:[getElement(ev,sQry,homeWind)])
+    profilelist.bind('<<ListboxSelect>>', lambda ev,sQry=uQuery,homeWind=root:[getElement(ev,sQry,homeWind)])
     profilelist.place(x=30,y=80)
     root.mainloop()
+# home()
 # open('./docs/page1.html','w').write(instructor('S_PG1.md'))
-home()
 # runTest("https://en.wikipedia.org/w/index.php?search=","Microsoft","div","id","mw-content-text")
